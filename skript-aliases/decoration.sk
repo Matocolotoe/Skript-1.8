@@ -1,0 +1,241 @@
+# Decoratives whose IDs have never changed or whose differences can be expressed with a variant.
+unchanged decoratives:
+	brown mushroom¦s = minecraft:brown_mushroom
+	red mushroom¦s = minecraft:red_mushroom
+	[any] [small] mushroom = brown mushroom, red mushroom
+	(workbench¦es|crafting table¦s) = minecraft:crafting_table
+	(soil|farmland) [block¦s] = minecraft:farmland
+	cactus¦es = minecraft:cactus
+	[huge] brown mushroom block¦s = minecraft:brown_mushroom_block
+	[huge] red mushroom block¦s = minecraft:red_mushroom_block
+	vine¦s = minecraft:vine
+	enchant(ment|ing) table¦s = minecraft:enchanting_table
+	painting [item]¦s = minecraft:painting[relatedEntity=painting]
+	item frame [item]¦s = minecraft:item_frame[relatedEntity=item frame]
+	armor stand [item]¦s = minecraft:armor_stand[relatedEntity=armor stand]
+
+# Decoratives who used to have a different ID before the flattening.
+decoratives before flattening:
+	minecraft version = 1.12.2 or older
+	{old wood type} sapling¦s = minecraft:sapling
+	jukebox¦es = minecraft:jukebox
+
+	# Leaves
+	oak lea(f|ves) = minecraft:leaves {Damage:0}
+	spruce lea(f|ves) = minecraft:leaves {Damage:1}
+	birch lea(f|ves) = minecraft:leaves {Damage:2}
+	jungle lea(f|ves) = minecraft:leaves {Damage:3}
+	(persistent|permanent) oak lea(f|ves) = minecraft:leaves {Damage:4}
+	(persistent|permanent) spruce lea(f|ves) = minecraft:leaves {Damage:5}
+	(persistent|permanent) birch lea(f|ves) = minecraft:leaves {Damage:6}
+	(persistent|permanent) jungle lea(f|ves) = minecraft:leaves {Damage:7}
+
+	acacia lea(f|ves) = minecraft:leaves2 {Damage:0}
+	dark oak lea(f|ves) = minecraft:leaves2 {Damage:1}
+	(persistent|permanent) acacia lea(f|ves) = minecraft:leaves2 {Damage:4}
+	(persistent|permanent) dark oak lea(f|ves) = minecraft:leaves2 {Damage:5}
+
+	[any] lea(f|ves) = oak leaves, birch leaves, jungle leaves, spruce leaves, dark oak leaves, acacia leaves
+
+	[cob]web¦s = minecraft:web
+
+	# Plants
+	dead (grass|bush)¦es = minecraft:tallgrass {Damage:0}, minecraft:deadbush
+	(tall|long) grass¦es = minecraft:tallgrass {Damage:1}
+	fern¦s = minecraft:tallgrass {Damage:2}
+
+	# Small flowers
+	(dandelion|yellow flower)¦s = minecraft:yellow_flower
+	(popp(y|ies)|red flower¦s) = minecraft:red_flower {Damage:0}
+	blue orchid¦s = minecraft:red_flower {Damage:1}
+	allium¦s = minecraft:red_flower {Damage:2}
+	azure bluet¦s = minecraft:red_flower {Damage:3}
+	red tulip¦s = minecraft:red_flower {Damage:4}
+	orange tulip¦s = minecraft:red_flower {Damage:5}
+	white tulip¦s = minecraft:red_flower {Damage:6}
+	pink tulip¦s = minecraft:red_flower {Damage:7}
+	oxeye dais(y|ies) = minecraft:red_flower {Damage:8}
+	[any] tulip¦s = red tulip, orange tulip, white tulip, pink tulip
+	[any] small flower = dandelion, poppy, blue orchid, allium, azure bluet, any tulip, oxeye daisy
+
+	# Large flowers
+	sunflower¦s = minecraft:double_plant {Damage:0}
+	lilac¦s = minecraft:double_plant {Damage:1}
+	double (tall|long|height) grass = minecraft:double_plant {Damage:2}
+	(long|large) fern = minecraft:double_plant {Damage:3}
+	rose bush¦es = minecraft:double_plant {Damage:4}
+	peon(y|ies) = minecraft:double_plant {Damage:5}
+	tall plant top = minecraft:double_plant {Damage:8}
+	[any] (large|tall|double height) flower = sunflower, lilac, rose bush, peony
+
+
+	# Fences
+	oak fence¦s = minecraft:fence
+	spruce fence¦s = minecraft:spruce_fence
+	birch fence¦s = minecraft:birch_fence
+	jungle fence¦s = minecraft:jungle_fence
+	acacia fence¦s = minecraft:acacia_fence
+	dark oak fence¦s = minecraft:dark_oak_fence
+	nether brick fence¦s = minecraft:nether_brick_fence
+
+	# Silverfish blocks
+	(infested|silverfish) stone [block¦s] = minecraft:monster_egg {Damage:0}
+	(infested|silverfish) cobblestone [block¦s] = minecraft:monster_egg {Damage:1}
+	(infested|silverfish) stone brick [block]¦s = minecraft:monster_egg {Damage:2}
+	(infested|silverfish) mossy stone brick [block]¦s = minecraft:monster_egg {Damage:3}
+	(infested|silverfish) cracked stone brick [block]¦s = minecraft:monster_egg {Damage:4}
+	(infested|silverfish) chiseled stone brick [block]¦s = minecraft:monster_egg {Damage:5}
+
+	# Mushroom stems used to be stored with the brown mushroom ID
+	huge mushroom stem¦s = minecraft:brown_mushroom_block {Damage:10}, minecraft:brown_mushroom_block {Damage:15}
+
+	# End Portal frame
+	end[er] portal frame¦s = minecraft:end_portal_frame
+	empty end[er] portal frame¦s @an = minecraft:end_portal_frame {Damage:0}, minecraft:end_portal_frame {Damage:1}, minecraft:end_portal_frame {Damage:2}, minecraft:end_portal_frame {Damage:3}
+	filled end[er] portal frame¦s = minecraft:end_portal_frame {Damage:4}, minecraft:end_portal_frame {Damage:5}, minecraft:end_portal_frame {Damage:6}, minecraft:end_portal_frame {Damage:7}
+
+	# Cobble walls
+	cobblestone wall¦s = minecraft:cobblestone_wall {Damage:0}
+	mossy cobblestone wall¦s = minecraft:cobblestone_wall {Damage:1}
+	any cobblstone wall¦s = cobblestone wall, mossy cobblestone wall
+
+	# Colored blocks
+	{colored} carpet¦s = minecraft:carpet
+	[any] carpet¦s = white carpet, orange carpet, magenta carpet, light blue carpet, yellow carpet, lime carpet, pink carpet, dark gray carpet, light gray carpet, cyan carpet, purple carpet, blue carpet, brown carpet, dark green carpet, red carpet, black carpet
+
+	{colored} [stained] glass pane¦s = minecraft:stained_glass_pane
+	[any] stained glass pane¦s = white stained glass pane, orange stained glass pane, magenta stained glass pane, light blue stained glass pane, yellow stained glass pane, lime stained glass pane, pink stained glass pane, dark gray stained glass pane, light gray stained glass pane, cyan stained glass pane, purple stained glass pane, blue stained glass pane, brown stained glass pane, dark green stained glass pane, red stained glass pane, black stained glass pane
+
+	# Signs
+	wall sign¦s = minecraft:wall_sign
+	floor sign¦s = minecraft:standing_sign
+	sign item¦s = minecraft:sign
+	[any] sign¦s = wall sign, floor sign, sign item
+
+	# Miscellaneous
+	{attached} torch¦es = minecraft:torch
+	chest¦s = minecraft:chest
+	trapped chest¦s = minecraft:trapped_chest
+	(wet|moist|hydrated) farmland = minecraft:farmland {Damage:7}
+	unlit furnace¦s = minecraft:furnace
+	lit furnace¦s = minecraft:lit_furnace
+	[any] furnace¦s = unlit furnace, lit furnace
+
+	ladder item¦s = minecraft:ladder
+	south[ward] facing ladder = minecraft:ladder {Damage:0}
+	north[ward] facing ladder = minecraft:ladder {Damage:3}
+	east[ward] facing ladder = minecraft:ladder {Damage:4}
+	west[ward] facing ladder = minecraft:ladder {Damage:5}
+
+	snow layer¦s = minecraft:snow_layer
+	one thick snow layer = minecraft:snow_layer {Damage:0}
+	two thick snow layer = minecraft:snow_layer {Damage:1}
+	three thick snow layer = minecraft:snow_layer {Damage:2}
+	four thick snow layer = minecraft:snow_layer {Damage:3}
+	five thick snow layer = minecraft:snow_layer {Damage:4}
+	six thick snow layer = minecraft:snow_layer {Damage:5}
+	seven thick snow layer = minecraft:snow_layer {Damage:6}
+	eight thick snow layer = minecraft:snow_layer {Damage:7}
+
+	iron bar¦s = minecraft:iron_bars
+	[plain] glass pane¦s = minecraft:glass_pane
+	(water lil(y|ies)|lily pad¦s) = minecraft:waterlily
+	ender chest¦s = minecraft:ender_chest
+	anvil¦s = minecraft:anvil
+	slime block¦s = minecraft:slime
+	bed [block]¦s = minecraft:bed
+	any bed¦s = minecraft:bed
+
+	[empty] flower pot¦s = minecraft:flower_pot
+
+unchanged categories:
+	any chest¦s = chest, trapped chest, ender chest
+	[any] fence¦s = oak fence, spruce fence, birch fence, jungle fence, acacia fence, dark oak fence, nether brick fence
+	[any] sapling¦s = oak sapling, spruce sapling, birch sapling, jungle sapling, acacia sapling, dark oak sapling
+	[any] flower¦s = any small flower, any large flower
+
+orientations before flattening:
+	minecraft version = 1.12.2 or older
+	{skull types}:
+		skeleton (skull|head)¦s = - {Damage:0}
+		wither skeleton (skull|head)¦s = - {Damage:1}
+		zombie (head|skull)¦s = - {Damage:2}
+		player (head|skull)¦s = - {Damage:3}
+		creeper (head|skull)¦s = - {Damage:4}
+		dragon (head|skull)¦s = - {Damage:5}
+	{wall orientations}:
+		{default} = -
+		south(ward| facing) = - {Damage:3}
+		north(ward| facing) = - {Damage:2}
+		west(ward| facing) = - {Damage:4}
+		east(ward| facing) = - {Damage:5}
+	{banner standing orientations}:
+		{default} = -
+		south(ward| rotated) = - {Damage:1,Rot:0}
+		south-southwest(ward| rotated) = - {Damage:1,Rot:1}
+		southwest(ward| rotated) = - {Damage:1,Rot:2}
+		west-southwest(ward| rotated) = - {Damage:1,Rot:3}
+		west(ward| rotated) = - {Damage:1,Rot:4}
+		west-northwest(ward| rotated) = - {Damage:1,Rot:5}
+		northwest(ward| rotated) = - {Damage:1,Rot:6}
+		north-northwest(ward| rotated) = - {Damage:1,Rot:7}
+		north(ward| rotated) = - {Damage:1,Rot:8}
+		north-northeast(ward| rotated) = - {Damage:1,Rot:9}
+		northeast(ward| rotated) = - {Damage:1,Rot:10}
+		east-northeast(ward| rotated) = - {Damage:1,Rot:11}
+		east(ward| rotated) = - {Damage:1,Rot:12}
+		east-southeast(ward| rotated) = - {Damage:1,Rot:13}
+		southeast(ward| rotated) = - {Damage:1,Rot:14}
+		south-southeast(ward| rotated) = - {Damage:1,Rot:15}
+	{skull floor orientations}:
+		{default} = -
+		north(ward| rotated) = - {Damage:1,Rot:0}
+		north-northeast(ward| rotated) = - {Damage:1,Rot:1}
+		northeast(ward| rotated) = - {Damage:1,Rot:2}
+		east-northeast(ward| rotated) = - {Damage:1,Rot:3}
+		east(ward| rotated) = - {Damage:1,Rot:4}
+		east-southeast(ward| rotated) = - {Damage:1,Rot:5}
+		southeast(ward| rotated) = - {Damage:1,Rot:6}
+		south-southeast(ward| rotated) = - {Damage:1,Rot:7}
+		south(ward| rotated) = - {Damage:1,Rot:8}
+		south-southwest(ward| rotated) = - {Damage:1,Rot:9}
+		southwest(ward| rotated) = - {Damage:1,Rot:10}
+		west-southwest(ward| rotated) = - {Damage:1,Rot:11}
+		west(ward| rotated) = - {Damage:1,Rot:12}
+		west-northwest(ward| rotated) = - {Damage:1,Rot:13}
+		northwest(ward| rotated) = - {Damage:1,Rot:14}
+		north-northwest(ward| rotated) = - {Damage:1,Rot:15}
+	{placed banner colors}:
+		{default} = -
+		white = - {Base:15}
+		orange = - {Base:14}
+		magenta = - {Base:13}
+		light blue = - {Base:12}
+		yellow = - {Base:11}
+		(lime|light green) = - {Base:10}
+		pink = - {Base:9}
+		[dark] gray = - {Base:8}
+		light gray = - {Base:7}
+		cyan = - {Base:6}
+		purple = - {Base:5}
+		blue = - {Base:4}
+		brown = - {Base:3}
+		[dark] green = - {Base:2}
+		red = - {Base:1}
+		black = - {Base:0}
+
+directionals before flattening:
+	minecraft version = 1.12.2 or older
+
+	# Skulls on walls and floors
+	[any] (head|skull) item¦s = minecraft:skull
+	{skull types} item¦s = minecraft:skull
+	({wall orientations}|{skull floor orientations}) {skull types} = minecraft:skull
+
+# Simplified banner aliases for old Minecraft versions.
+basic banners:
+	minecraft version = 1.10.2 or older
+	wall banner¦s = minecraft:wall_banner
+	[standing] banner¦s = minecraft:standing_banner
+	[any] banner item¦s = minecraft:banner
+	[any] banner = minecraft:banner, minecraft:wall_banner, minecraft:standing_banner

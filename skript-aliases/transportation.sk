@@ -1,0 +1,67 @@
+transportation items:
+	saddle¦s = minecraft:saddle
+	carrot[s] on [a] stick¦s = minecraft:carrot_on_a_stick
+
+boat:
+	boat¦s = minecraft:boat[relatedEntity=boat]
+
+minecarts:
+	[normal] minecart¦s = minecraft:minecart[relatedEntity=minecart]
+
+	minecart[s] with chest¦s = minecraft:chest_minecart
+	storage minecart¦s = minecart with chest[relatedEntity=minecart with chest]
+
+	minecart[s] with furnace¦s = minecraft:furnace_minecart
+	powered minecart¦s = minecart with furnace[relatedEntity=powered minecart]
+
+	minecart[s] with tnt¦s = minecraft:tnt_minecart[relatedEntity=explosive minecart]
+	minecart[s] with hopper¦s = minecraft:hopper_minecart[relatedEntity=hopper minecart]
+	minecart[s] with command block¦s = minecraft:command_block_minecart
+
+	any minecart¦s = minecart, minecart with chest, minecart with furnace, minecart with tnt, minecart with hopper, minecart with command block
+
+rails before flattening:
+	minecraft version = 1.12.2 or older
+	{rail straight}:
+		{default} = - {Damage:0}
+		[(flat|straight)] (north-south|south-north) = - {Damage:0}
+		[(flat|straight)] (east-west|west-east) = - {Damage:1}
+		(ascending east|descending west) = - {Damage:2}
+		(ascending west|descending east) = - {Damage:3}
+		(ascending north|descending south) = - {Damage:4}
+		(ascending south|descending north) = - {Damage:5}
+
+	{rail powered}:
+		{default} = - {Damage:8}
+		(powered|active) [(flat|straight)] (north-south|south-north) = - {Damage:8}
+		(powered|active) [(flat|straight)] (east-west|west-east) = - {Damage:9}
+		(powered|active) (ascending east|descending west) = - {Damage:10}
+		(powered|active) (ascending west|descending east) = - {Damage:11}
+		(powered|active) (ascending north|descending south) = - {Damage:12}
+		(powered|active) (ascending south|descending north) = - {Damage:13}
+
+	{rail curve}:
+		{default} = - {Damage:9}
+		[curved] (south-east|east-south) = - {Damage:6}
+		[curved] (south-west|west-south) = - {Damage:7}
+		[curved] (north-west|west-north) = - {Damage:8}
+		[curved] (north-east|east-north) = - {Damage:9}
+
+	# Powered Rail
+	({rail straight}|{rail powered}) (golden|powered) [minecart] (rail|track)¦s = minecraft:golden_rail
+	(golden|powered) [minecart] (rail|track) item¦s = minecraft:golden_rail
+
+	# Detector Rail
+	({rail straight}|{rail powered}) detector [minecart] (rail|track)¦s = minecraft:detector_rail
+	detector [minecart] (rail|track) item¦s = minecraft:detector_rail
+
+	# Activator rail
+	({rail straight}|{rail powered}) activator [minecart] (rail|track)¦s = minecraft:activator_rail
+	activator [minecart] (rail|track) item¦s = minecraft:activator_rail
+
+# Rails whose IDs were never changed and whose version differences can be defined by variations.
+unchanged rails:
+	[({rail straight}|{rail curve})] [normal] [minecart] (rail|track) [block]¦s = minecraft:rail
+	(ascending|descending|inclined) [normal] [minecart] (rail|track) [block]¦s = ascending north rail, ascending south rail, ascending east rail, ascending west rail
+	curved [normal] [minecart] (rail|track) [block]¦s = north-east rail, north-west rail, south-east rail, south-west rail
+	[minecart] (rail|track) item¦s = minecraft:rail

@@ -1,0 +1,74 @@
+# ===== GRADLE =====
+
+# Gradle: compiled stuff lands here
+/target
+
+# Gradle: auto-generated
+/.gradle/
+
+
+# ===== INTELLIJ and other JetBrains products =====
+
+# IntelliJ: compiled stuff lands here
+build/
+out/
+
+# IntelliJ: user-specific
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/inspectionProfiles
+.idea/**/deployment.xml
+
+# IntelliJ: auto-generated
+*.iml
+.idea/**/libraries
+.idea/**/modules
+
+# IntelliJ: meaningless in general or for Skript
+.idea/**/usage.statistics.xml
+.idea/**/uiDesigner.xml
+.idea/**/shelf
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/dbnavigator.xml
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator
+
+
+# ===== OTHER =====
+
+# [Maybe ECJ:] compiled stuff lands here
+**/bin/
+
+# Files that must not change to keep 1.8 compatibility
+# Changes done on them will be merged manually on GitHub
+src/main/resources/materials/*
+src/main/java/ch/njol/skript/bukkitutil/BukkitUnsafe.java
+src/main/java/ch/njol/skript/bukkitutil/ClickEventTracker.java
+src/main/java/ch/njol/skript/entity/BoatData.java
+src/main/java/ch/njol/skript/events/EvtClick.java
+src/main/java/ch/njol/skript/hooks/biomes/BiomeMapUtil.java
+
+# Files adding features not available in 1.8
+src/main/java/ch/njol/skript/conditions/CondHasCustomModelData.java
+src/main/java/ch/njol/skript/conditions/CondIsRipting.java
+src/main/java/ch/njol/skript/expressions/ExprClientViewDistance.java
+src/main/java/ch/njol/skript/expressions/ExprGlidingState.java
+src/main/java/ch/njol/skript/expressions/ExprGlowing.java
+src/main/java/ch/njol/skript/expressions/ExprGravity.java
+src/main/java/ch/njol/skript/expressions/ExprItemWithCustomModelData.java
+src/main/java/ch/njol/skript/expressions/ExprLastLoadedServerIcon.java
+src/main/java/ch/njol/skript/expressions/ExprLastResourcePackResponse.java
+src/main/java/ch/njol/skript/expressions/ExprOffTool.java
+src/main/java/ch/njol/skript/expressions/ExprPlayerViewDistance.java
+src/main/java/ch/njol/skript/entity/BeeData.java
+src/main/java/ch/njol/skript/entity/FishData.java
+src/main/java/ch/njol/skript/entity/FoxData.java
+src/main/java/ch/njol/skript/entity/LlamaData.java
+src/main/java/ch/njol/skript/entity/PandaData.java
+src/main/java/ch/njol/skript/entity/ParrotData.java
+src/main/java/ch/njol/skript/entity/TropicalFishData.java

@@ -1,0 +1,71 @@
+# Food items
+
+# Most of the foods are simple items that have always existed. These didn't change in 1.13.
+unchanged foods:
+	apple¦s = minecraft:apple
+	baked potato¦es = minecraft:baked_potato
+	[loa(f|ves) of] bread = minecraft:bread
+	carrot¦s = minecraft:carrot
+	(cooked beef|steak¦s) = minecraft:cooked_beef
+	cooked chicken¦s = minecraft:cooked_chicken
+	cooked mutton¦s = minecraft:cooked_mutton
+	cooked pork[chop¦s] = minecraft:cooked_porkchop
+	cooked rabbit¦s = minecraft:cooked_rabbit
+	cookie¦s = minecraft:cookie
+	golden carrot¦s = minecraft:golden_carrot
+	mushroom (stew|soup)¦s = minecraft:mushroom_stew
+	poisonous potato¦es = minecraft:poisonous_potato
+	potato¦es = minecraft:potato
+	pumpkin pie¦s = minecraft:pumpkin_pie
+	rabbit (stew|soup)¦s = minecraft:rabbit_stew
+	[raw] beef = minecraft:beef
+	[raw] chicken¦s = minecraft:chicken[relatedEntity=chicken]
+	[raw] mutton¦s = minecraft:mutton
+	[raw] pork[chop]¦s = minecraft:porkchop
+	[raw] rabbit¦s = minecraft:rabbit[relatedEntity=rabbit]
+	rotten flesh = minecraft:rotten_flesh
+	spider eye¦s = minecraft:spider_eye
+
+# Before the flattening in 1.13, some foods used data values.
+foods before flattening:
+	minecraft version = 1.12.2 or older
+	[raw] (fish¦es|cod [fillet]¦s|fish fillet¦s) = minecraft:fish
+	[raw] salmon [fillet]¦s = minecraft:fish {Damage:1}
+	clownfish¦es = minecraft:fish {Damage:2}
+	pufferfish¦es = minecraft:fish {Damage:3}
+	cooked (fish¦es|cod [fillet]¦s|fish fillet¦s) = minecraft:cooked_fish
+	cooked salmon [fillet]¦s = minecraft:cooked_fish {Damage:1}
+	any raw fish¦es = raw cod, raw salmon, pufferfish, clownfish
+
+	[normal] golden apple = minecraft:golden_apple {Damage:0}
+	(enchanted golden|notch) apple = minecraft:golden_apple {Damage:1}
+	
+	melon slice¦s = minecraft:melon
+
+	cake¦s = minecraft:cake
+
+# Groups of items for useful reference
+common categories:
+	any cod [fillet]¦s = raw cod, cooked cod
+	any salmon [fillet]¦s = raw salmon, cooked salmon
+	any cooked (fish¦es|fish fillet¦s) = cooked cod, cooked salmon
+	any fish¦es = any raw fish, any cooked fish
+	
+	any golden apple = normal golden apple, enchanted golden apple
+	any apple = any golden apple, apple
+	[any] (soup|stew)¦s = mushroom stew, rabbit stew
+	[any] root vegetable¦s = carrot, potato
+	any potato¦es = potato, baked potato
+	[any] fruit¦s = any apple, melon slice
+	
+	[any] raw meat¦s = raw beef, raw chicken, raw mutton, raw porkchop, raw rabbit
+	[any] cooked meat¦s = steak, cooked chicken, cooked mutton, cooked porkchop, cooked rabbit
+	[any] meat¦s = any raw meat, any cooked meat
+	[any] monster (food|meat¦s) = rotten flesh, spider eye
+	[any] cooked food¦s = baked potato, any cooked meat, any cooked fish
+
+# All foods before
+old food categories:
+	minecraft version = 1.12.2 or older
+	[any] dessert¦s = cookie, cake, pumpkin pie
+	[any] food = any fish, fruit, root vegetables, stews, meats, monster meats, desserts, bread, baked potato, poisonous potato

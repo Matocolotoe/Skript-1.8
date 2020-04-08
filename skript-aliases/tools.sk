@@ -1,0 +1,46 @@
+tools:
+	wood[en] pickaxe¦s = minecraft:wooden_pickaxe
+	wood[en] axe¦s = minecraft:wooden_axe
+	wood[en] shovel¦s = minecraft:wooden_shovel
+	wood[en] hoe¦s = minecraft:wooden_hoe
+
+	stone pickaxe¦s = minecraft:stone_pickaxe
+	stone axe¦s = minecraft:stone_axe
+	stone shovel¦s = minecraft:stone_shovel
+	stone hoe¦s = minecraft:stone_hoe
+
+	gold[en] pickaxe¦s = minecraft:golden_pickaxe
+	gold[en] axe¦s = minecraft:golden_axe
+	gold[en] shovel¦s = minecraft:golden_shovel
+	gold[en] hoe¦s = minecraft:golden_hoe
+
+	iron pickaxe¦s = minecraft:iron_pickaxe
+	iron axe¦s = minecraft:iron_axe
+	iron shovel¦s = minecraft:iron_shovel
+	iron hoe¦s = minecraft:iron_hoe
+
+	diamond pickaxe¦s = minecraft:diamond_pickaxe
+	diamond axe¦s = minecraft:diamond_axe
+	diamond shovel¦s = minecraft:diamond_shovel
+	diamond hoe¦s = minecraft:diamond_hoe
+
+	[any] wood[en] tool¦s = wood pickaxe, wood axe, wood shovel, wood hoe
+	[any] stone tool¦s = stone pickaxe, stone axe, stone shovel, stone hoe
+	[any] gold[en] tool¦s = golden pickaxe, golden axe, golden shovel, golden hoe
+	[any] iron tool¦s = iron pickaxe, iron axe, iron shovel, iron hoe
+	[any] diamond tool¦s = diamond pickaxe, diamond axe, diamond shovel, diamond hoe
+
+	[any] pickaxe¦s = wooden pickaxe, stone pickaxe, golden pickaxe, iron pickaxe, diamond pickaxe
+	[any] axe¦s = wooden axe, stone axe, golden axe, iron axe, diamond axe
+	[any] shovel¦s = wooden shovel, stone shovel, golden shovel, iron shovel, diamond shovel
+	[any] hoe¦s = wooden hoe, stone hoe, golden hoe, iron hoe, diamond hoe
+
+	any tool¦s = any pickaxe, any axe, any shovel, any hoe
+
+	compass¦es = minecraft:compass
+	[gold[en]] clock¦s = minecraft:clock
+	fishing rod¦s = minecraft:fishing_rod
+	flint and steel¦s = minecraft:flint_and_steel
+	shear¦s = minecraft:shears
+	(lead¦s|leash¦es) = minecraft:lead
+	name[ ]tag¦s = minecraft:name_tag

@@ -1,0 +1,74 @@
+#= For blocks that aren't in the creative mode menu in any category or that generally can't be obtained in the inventory.
+
+# Unlisted blocks whose IDs have never changed.
+unlisted blocks:
+	end[er] portal [block¦s] = minecraft:end_portal
+	fire = minecraft:fire
+	tripwire [(string|line)] = minecraft:tripwire
+	air = minecraft:air
+	barrier [block]¦s = minecraft:barrier
+	dragon egg¦s = minecraft:dragon_egg
+
+# Unlisted blocks that had a different ID before the flattening.
+unlisted before flattening:
+	minecraft version = 1.12.2 or older
+	[nether] portal [block¦s] = minecraft:portal
+	[monster] spawner¦s = minecraft:mob_spawner
+
+	{command block direction}:
+		{default} = - {Damage:1}
+		down[ward] [facing] = - {Damage:0}
+		up[ward] [facing] = - {Damage:1}
+		north[ward] [facing] = - {Damage:2}
+		south[ward] [facing] = - {Damage:3}
+		west[ward] [facing] = - {Damage:4}
+		east[ward] [facing] = - {Damage:5}
+		down[ward] [facing] conditional = - {Damage:8}
+		up[ward] [facing] conditional = - {Damage:9}
+		north[ward] [facing] conditional = - {Damage:10}
+		south[ward] [facing] conditional = - {Damage:11}
+		west[ward] [facing] conditional = - {Damage:12}
+		east[ward] [facing] conditional = - {Damage:13}
+	{command block direction} [impulse] command block¦s = minecraft:command_block
+
+	{cocoa states}:
+		{default} = - {Damage:0}
+		(small|freshly planted) north[ward] [facing] = - {Damage:0}
+		(small|freshly planted) east[ward] [facing] = - {Damage:1}
+		(small|freshly planted) south[ward] [facing] = - {Damage:2}
+		(small|freshly planted) west[ward] [facing] = - {Damage:3}
+		medium north[ward] [facing] = - {Damage:4}
+		medium east[ward] [facing] = - {Damage:5}
+		medium south[ward] [facing] = - {Damage:6}
+		medium west[ward] [facing] = - {Damage:7}
+		(ripe|big|large) north[ward] [facing] = - {Damage:8}
+		(ripe|big|large) east[ward] [facing] = - {Damage:9}
+		(ripe|big|large) south[ward] [facing] = - {Damage:10}
+		(ripe|big|large) west[ward] [facing] = - {Damage:11}
+	{cocoa states} cocoa [plant¦s] = minecraft:cocoa
+
+	pumpkin stem = minecraft:pumpkin_stem
+	melon stem = minecraft:melon_stem
+
+	{crop growth stage}:
+		{default} = - {Damage:7}
+		freshly planted = - {Damage:0}
+		stage (2|two) = - {Damage:1}
+		stage (3|three) = - {Damage:2}
+		stage (4|four) = - {Damage:3}
+		stage (5|five) = - {Damage:4}
+		stage (6|six) = - {Damage:5}
+		stage (7|seven) = - {Damage:6}
+		(ripe|fully grown|stage (8|eight)) = - {Damage:7}
+	{crop growth stage} potato plant¦s = minecraft:potatoes
+	{crop growth stage} carrot plant¦s = minecraft:carrots
+	{crop growth stage} wheat plant¦s = minecraft:wheat
+	{crop growth stage} pumpkin stem = minecraft:pumpkin_stem
+	{crop growth stage} melon stem = minecraft:melon_stem
+
+old fluids:
+	minecraft version = 1.12.2 or older
+	flowing water = minecraft:flowing_water
+	flowing lava = minecraft:flowing_lava
+	[stationary] water = minecraft:water
+	[stationary] lava = minecraft:lava

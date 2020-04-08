@@ -1,0 +1,62 @@
+armor:
+	leather (cap|helmet)¦s = minecraft:leather_helmet
+	leather (tunic|chest(piece|plate))¦s = minecraft:leather_chestplate
+	leather (pants|leggings) = minecraft:leather_leggings
+	leather boots = minecraft:leather_boots
+	[any] leather armo[u]r = leather cap, leather chestpiece, leather pants, leather boots
+
+	iron (cap|helmet)¦s = minecraft:iron_helmet
+	iron chest(piece|plate)¦s = minecraft:iron_chestplate
+	iron (pants|leggings) = minecraft:iron_leggings
+	iron boots = minecraft:iron_boots
+	[any] iron armo[u]r = iron cap, iron chestpiece, iron pants, iron boots
+
+	gold[en] (cap|helmet)¦s = minecraft:golden_helmet
+	gold[en] chest(piece|plate)¦s = minecraft:golden_chestplate
+	gold[en] (pants|leggings) = minecraft:golden_leggings
+	gold[en] boots = minecraft:golden_boots
+	[any] gold[en] armo[u]r = gold cap, gold chestpiece, gold pants, gold boots
+
+	diamond (cap|helmet)¦s = minecraft:diamond_helmet
+	diamond chest(piece|plate)¦s = minecraft:diamond_chestplate
+	diamond (pants|leggings) = minecraft:diamond_leggings
+	diamond boots = minecraft:diamond_boots
+	[any] diamond armo[u]r = diamond cap, diamond chestpiece, diamond pants, diamond boots
+
+	chain[mail] (cap|helmet)¦s = minecraft:chainmail_helmet
+	chain[mail] chest(piece|plate)¦s = minecraft:chainmail_chestplate
+	chain[mail] (pants|leggings) = minecraft:chainmail_leggings
+	chain[mail] boots = minecraft:chainmail_boots
+	[any] chain[mail] armo[u]r = chain cap, chain chestpiece, chain pants, chain boots
+
+	[any] armo[u]r = leather armor, iron armor, gold armor, diamond armor, chain armor
+
+	# By equipment slot
+	[any] (cap|helmet)¦s = leather cap, iron cap, gold cap, diamond cap, chain cap
+	[any] chest(piece|plate)¦s = leather chestpiece, iron chestpiece, gold chestpiece, diamond chestpiece, chain chestpiece
+	[any] (pants|leggings) = leather pants, iron pants, gold pants, diamond pants, chain pants
+	[any] boots = leather boots, iron boots, gold boots, diamond boots, chain boots
+
+weapons:
+	wood[en] sword¦s = minecraft:wooden_sword
+	stone sword¦s = minecraft:stone_sword
+	gold[en] sword¦s = minecraft:golden_sword
+	iron sword¦s = minecraft:iron_sword
+	diamond sword¦s = minecraft:diamond_sword
+	[any] sword¦s = wooden sword, stone sword, golden sword, iron sword, diamond sword
+
+	bow¦s = minecraft:bow
+	arrow¦s = minecraft:arrow[relatedEntity=arrow]
+
+horse armor:
+	iron (horse armo[u]r|barding) = minecraft:iron_horse_armor
+	gold[en] (horse armo[u]r|barding) = minecraft:golden_horse_armor
+	diamond (horse armo[u]r|barding) = minecraft:diamond_horse_armor
+
+	[any] (horse armo[u]r|barding) = iron horse armor, gold horse armor, diamond horse armor
+
+old categories:
+	minecraft version = 1.12.2 or older
+	[any] weapon¦s = any sword, bow
+	[any] equipment = any weapon, any armor
+

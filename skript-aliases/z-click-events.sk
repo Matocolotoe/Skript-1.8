@@ -1,0 +1,6 @@
+# Aliases that click events need to work reliably
+
+click events:
+	usable in both hands = bow, egg, splash potion, snowball, any bucket, fishing rod, flint and steel, any hoe, leash, shears, any shovel, ender pearl, any spawn egg, paper, item frame item, ender eye, book with text
+	usable block = anvil, beacon, any bed, brewing stand, cauldron, any chest, crafting table, enchanting table, furnace, any door, any trapdoor, any fence gate, hopper, dispenser, dropper, lever, any button, command block, item frame item, any sign
+	block usable with main hand = cake

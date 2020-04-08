@@ -1,0 +1,164 @@
+# Uncategorized items
+
+mining:
+	coal = minecraft:coal
+	diamond¦s = minecraft:diamond
+	iron ingot¦s = minecraft:iron_ingot
+	gold[en] ingot¦s = minecraft:gold_ingot
+	any ingot¦s = iron ingot, gold ingot
+	gold[en] nugget¦s = minecraft:gold_nugget
+	emerald¦s = minecraft:emerald
+	flint¦s = minecraft:flint
+
+old items:
+	minecraft version = 1.12.2 or older
+	charcoal = minecraft:coal {Damage:1}
+	sugar cane¦s = minecraft:reeds
+	nether brick item¦s = minecraft:netherbrick
+
+valuables:
+	{beacon levels}:
+		{default} = -
+		(level (0|one)|unleveled) = - {Levels:0}
+		(level (1|one)) = - {Levels:1}
+		(level (2|two)) = - {Levels:2}
+		(level (3|three)) = - {Levels:3}
+		(level (4|four)|complete[d]) = - {Levels:4}
+	{beacon levels} beacon¦s = minecraft:beacon
+
+random items:
+	stick¦s = minecraft:stick
+	bowl¦s = minecraft:bowl
+	string¦s = minecraft:string
+	feather¦s = minecraft:feather
+	gunpowder = minecraft:gunpowder
+	snowball¦s = minecraft:snowball[relatedEntity=snowball]
+	leather = minecraft:leather
+	clay [ball¦s] = minecraft:clay_ball
+	[clay] brick [item]¦s = minecraft:brick
+	(piece[s] of paper|paper¦s) = minecraft:paper
+	slime[ ]ball¦s = minecraft:slime_ball
+	egg¦s = minecraft:egg[relatedEntity=egg]
+	glowstone dust = minecraft:glowstone_dust
+	bone¦s = minecraft:bone
+	sugar = minecraft:sugar
+	ender pearl¦s = minecraft:ender_pearl[relatedEntity=ender pearl]
+	blaze rod¦s = minecraft:blaze_rod
+	(ender eye¦s|eye[s] of ender) = minecraft:ender_eye
+	(bottle[s] o' enchanting|xp bottle¦s|experience bottle¦s) = minecraft:experience_bottle[relatedEntity=xp bottle]
+	fire charge¦s = minecraft:fire_charge
+	[empty] map = minecraft:map
+	filled map = minecraft:filled_map
+	nether star¦s = minecraft:nether_star
+	[nether] quartz = minecraft:quartz
+	prismarine shard¦s = minecraft:prismarine_shard
+	prismarine crystal¦s = minecraft:prismarine_crystals
+	rabbit hide¦s = minecraft:rabbit_hide
+	enchanted book¦s = minecraft:enchanted_book
+
+pre-flattening random items:
+	minecraft version = 1.12.2 or older
+	nether wart¦s = minecraft:nether_wart
+
+books:
+	book¦s = minecraft:book
+	(book and quill|writable book)¦s = minecraft:writable_book
+	written book¦s = minecraft:written_book
+	book with text = writable book, written book
+	enchanted book = minecraft:enchanted_book
+	any book¦s = book, book with text
+
+fireworks:
+	{firework types}:
+		(0|zero|immediate) = - {Fireworks:{Flight:0}}
+		(1|one|short) = - {Fireworks:{Flight:1}}
+		(2|two|medium) = - {Fireworks:{Flight:2}}
+		(3|three|long) = - {Fireworks:{Flight:3}}
+
+fireworks before flattening:
+	minecraft version = 1.12.2 or older
+	[(flight|duration|flight duration) {firework types} ] firework [rocket]¦s = minecraft:fireworks[relatedEntity=firework rocket]
+	firework (star|charge)¦s = minecraft:firework_charge
+
+plants:
+	pumpkin seed¦s = minecraft:pumpkin_seeds
+	melon seed¦s = minecraft:melon_seeds
+	[wheat] seed¦s = minecraft:wheat_seeds
+	any seed¦s = pumpkin seeds, melon seeds, wheat seeds
+
+	wheat [item¦s] = minecraft:wheat
+
+unchanged buckets:
+	[empty] bucket¦s = minecraft:bucket
+	water bucket¦s = minecraft:water_bucket
+	lava bucket¦s = minecraft:lava_bucket
+	milk [bucket¦s] = minecraft:milk_bucket
+	any bucket = empty bucket, water bucket, lava bucket, milk
+
+old music discs:
+	minecraft version = 1.12.2 or older
+	[music] (disc|record) 11 = minecraft:record_11
+	[music] (disc|record) 13 = minecraft:record_13
+	[music] (disc|record) blocks = minecraft:record_blocks
+	[music] (disc|record) cat = minecraft:record_cat
+	[music] (disc|record) chirp = minecraft:record_chirp
+	[music] (disc|record) far = minecraft:record_far
+	[music] (disc|record) mall = minecraft:record_mall
+	[music] (disc|record) mellohi = minecraft:record_mellohi
+	[music] (disc|record) stal = minecraft:record_stal
+	[music] (disc|record) strad = minecraft:record_strad
+	[music] (disc|record) wait = minecraft:record_wait
+	[music] (disc|record) ward = minecraft:record_ward
+	any [music] (disc|record) = music disc 11, music disc 13, music disc blocks, music disc cat, music disc chirp, music disc far, music disc mall, music disc mellohi, music disc stal, music disc strad, music disc wait, music disc ward
+
+dyes before flattening:
+	minecraft version = 1.12.2 or older
+	(ink sac|black dye)¦s = minecraft:dye {Damage:0}
+	(rose red|red dye)¦s =  minecraft:dye {Damage:1}
+	(cactus green|green dye)¦s = minecraft:dye {Damage:2}
+	(cocoa bean|brown dye)¦s = minecraft:dye {Damage:3}
+	(lapis [lazuli]|blue dye)¦s = minecraft:dye {Damage:4}
+	purple dye¦s = minecraft:dye {Damage:5}
+	cyan dye¦s = minecraft:dye {Damage:6}
+	light gr(a|e)y dye¦s = minecraft:dye {Damage:7}
+	gr(a|e)y dye¦s = minecraft:dye {Damage:8}
+	pink dye¦s = minecraft:dye {Damage:9}
+	lime dye¦s = minecraft:dye {Damage:10}
+	(dandelion yellow|yellow dye)¦s = minecraft:dye {Damage:11}
+	light blue dye¦s = minecraft:dye {Damage:12}
+	magenta dye¦s = minecraft:dye {Damage:13}
+	orange dye¦s = minecraft:dye {Damage:14}
+	(bone[ ]meal|white dye)¦s = minecraft:dye {Damage:15}
+	[any] dye = black dye, red dye, green dye, brown dye, blue dye, purple dye, cyan dye, light gray dye, gray dye, pink dye, lime dye, yellow dye, light blue dye, magenta dye, orange dye, white dye
+
+# These are for mobs that have existed since at least 1.8 and these IDs remained valid up through 1.12
+spawn eggs before flattening:
+	minecraft version = 1.12.2 or older
+	(bat [spawn] egg|spawn bat)¦s = minecraft:spawn_egg {Damage:65}
+	(blaze [spawn] egg|spawn blaze)¦s = minecraft:spawn_egg {Damage:61}
+	(cave spider [spawn] egg|spawn cave spider)¦s = minecraft:spawn_egg {Damage:59}
+	(chicken [spawn] egg|spawn chicken)¦s = minecraft:spawn_egg {Damage:93}
+	(cow [spawn] egg|spawn cow)¦s = minecraft:spawn_egg {Damage:92}
+	(creeper [spawn] egg|spawn creeper)¦s = minecraft:spawn_egg {Damage:50}
+	(enderman [spawn] egg|spawn enderman)¦s = minecraft:spawn_egg {Damage:58}
+	(endermite [spawn] egg|spawn endermite)¦s = minecraft:spawn_egg {Damage:67}
+	(ghast [spawn] egg|spawn ghast)¦s = minecraft:spawn_egg {Damage:56}
+	(guardian [spawn] egg|spawn guardian)¦s = minecraft:spawn_egg {Damage:68}
+	(horse [spawn] egg|spawn horse)¦s = minecraft:spawn_egg {Damage:100}
+	(magma cube [spawn] egg|spawn magma cube)¦s = minecraft:spawn_egg {Damage:62}
+	((mooshroom|mushroom cow) [spawn] egg|spawn (mooshroom|mushroom cow))¦s = minecraft:spawn_egg {Damage:96}
+	(ocelot [spawn] egg|spawn ocelot)¦s = minecraft:spawn_egg {Damage:98}
+	(pig [spawn] egg|spawn pig)¦s = minecraft:spawn_egg {Damage:90}
+	(rabbit [spawn] egg|spawn rabbit)¦s = minecraft:spawn_egg {Damage:101}
+	(sheep [spawn] egg|spawn sheep)¦s = minecraft:spawn_egg {Damage:91}
+	(silverfish [spawn] egg|spawn silverfish)¦s = minecraft:spawn_egg {Damage:60}
+	(skeleton [spawn] egg|spawn skeleton)¦s = minecraft:spawn_egg {Damage:51}
+	(slime [spawn] egg|spawn slime)¦s = minecraft:spawn_egg {Damage:55}
+	(spider [spawn] egg|spawn spider)¦s = minecraft:spawn_egg {Damage:52}
+	(squid [spawn] egg|spawn squid)¦s = minecraft:spawn_egg {Damage:94}
+	(villager [spawn] egg|spawn villager)¦s = minecraft:spawn_egg {Damage:120}
+	(witch [spawn] egg|spawn witch)¦s = minecraft:spawn_egg {Damage:66}
+	((wolf|dog) [spawn] egg|spawn (wolf|dog))¦s = minecraft:spawn_egg {Damage:95}
+	(zombie [spawn] egg|spawn zombie)¦s = minecraft:spawn_egg {Damage:54}
+	(zombie pig[man] [spawn] egg|spawn zombie pig[man])¦s = minecraft:spawn_egg {Damage:57}
+	[any] spawn egg¦s = spawn bat, spawn blaze, spawn cave spider, spawn chicken, spawn cow, spawn creeper, spawn enderman, spawn endermite, spawn ghast, spawn guardian, spawn horse, spawn magma cube, spawn mooshroom, spawn ocelot, spawn pig, spawn rabbit, spawn sheep, spawn silverfish, spawn skeleton, spawn slime, spawn spider, spawn squid, spawn villager, spawn witch, spawn wolf, spawn zombie, spawn zombie pigman

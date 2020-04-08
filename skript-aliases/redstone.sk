@@ -1,0 +1,122 @@
+# Redstone category items whose IDs have never changed or whose differences across versions can be
+# defined purely by variations.
+unchanged redstone:
+	# Redstone block in building
+	redstone (wire|dust block)¦s = minecraft:redstone_wire
+	redstone [(dust|item)¦s] = minecraft:redstone
+	any redstone item = redstone block, redstone item
+
+	stone pressure plate¦s = minecraft:stone_pressure_plate
+	(gold[en]|light weighted) pressure plate¦s = minecraft:light_weighted_pressure_plate
+	(iron|heavy weighted) pressure plate¦s = minecraft:heavy_weighted_pressure_plate
+
+	(tripwire|placed string)¦s = minecraft:tripwire
+
+	{orientable} dispenser¦s = minecraft:dispenser
+	{orientable} dropper¦s = minecraft:dropper
+
+	tnt [block¦s] = minecraft:tnt[relatedEntity=primed tnt]
+
+redstone before flattening:
+	minecraft version = 1.12.2 or older
+	# Repeater
+	unpowered [redstone] repeater¦s = minecraft:unpowered_repeater
+	powered [redstone] repeater¦s = minecraft:powered_repeater
+	[redstone] repeater item¦s = minecraft:repeater
+	[any] [redstone] repeater¦s = unpowered repeater, powered repeater, repeater item
+
+	# Comparator. Note that the powered_comparator block isn't even used.
+	powered comparator = minecraft:powered_comparator
+
+	[unpowered] [redstone] comparator [item]¦s = minecraft:comparator
+	powered [redstone] comparator¦s = minecraft:comparator {Damage:4}
+	any [redstone] comparator¦s = unpowered comparator, powered comparator
+
+	# Buttons & levers
+	{attached toggleable} [oak] wood button¦s = minecraft:wooden_button
+	{attached toggleable} stone button¦s = minecraft:stone_button
+	[any] button = stone button, wood button
+	[redstone] lever¦s = minecraft:lever
+
+	# Pressure plates
+	[oak] wood pressure plate¦s = minecraft:wooden_pressure_plate
+	[any] pressure plate¦s = stone pressure plate, wood pressure plate, gold pressure plate, iron pressure plate
+
+	# Trapdoors
+	iron trapdoor¦s = minecraft:iron_trapdoor
+	[oak] wood trapdoor¦s = minecraft:trapdoor
+	[any] trapdoor¦s = wood trapdoor, iron trapdoor
+
+	# Fences and doors
+	{gate state}:
+		{default} = - {Damage:0}
+		[closed] south(ward| facing) = - {Damage:0}
+		[closed] west(ward| facing) = - {Damage:1}
+		[closed] north(ward| facing) = - {Damage:2}
+		[closed] east(ward| facing) = - {Damage:3}
+		open south(ward| facing) = - {Damage:4}
+		open west(ward| facing) = - {Damage:5}
+		open north(ward| facing) = - {Damage:6}
+		open east(ward| facing) = - {Damage:7}
+
+	{gate state} oak [wood] [fence] gate¦s = minecraft:fence_gate
+	{gate state} spruce [wood] [fence] gate¦s = minecraft:spruce_fence_gate
+	{gate state} birch [wood] [fence] gate¦s = minecraft:birch_fence_gate
+	{gate state} jungle [wood] [fence] gate¦s = minecraft:jungle_fence_gate
+	{gate state} acacia [wood] [fence] gate¦s = minecraft:acacia_fence_gate
+	{gate state} dark oak [wood] [fence] gate¦s = minecraft:dark_oak_fence_gate
+	[any] [fence] gate¦s = oak gate, spruce gate, birch gate, jungle gate, acacia gate, dark oak gate
+
+	{door state}:
+		{default} = - {Damage:0}
+		[closed] east(ward| facing) [bottom] = - {Damage:0}
+		[closed] south(ward| facing) [bottom] = - {Damage:1}
+		[closed] west(ward| facing) [bottom] = - {Damage:2}
+		[closed] north(ward| facing) [bottom] = - {Damage:3}
+		open east(ward| facing) [bottom] = - {Damage:4}
+		open south(ward| facing) [bottom] = - {Damage:5}
+		open west(ward| facing) [bottom] = - {Damage:6}
+		open north(ward| facing) [bottom] = - {Damage:7}
+		left-hinged [closed] top = - {Damage:8}
+		right-hinged [closed] top = - {Damage:9}
+		left-hinged powered [closed] top = - {Damage:10}
+		right-hinged powered [closed] top = - {Damage:11}
+
+	# Door items
+	oak [wood] door¦s = minecraft:wooden_door
+	iron door¦s = minecraft:iron_door
+	spruce [wood] door¦s = minecraft:spruce_door
+	birch [wood] door¦s = minecraft:birch_door
+	jungle [wood] door¦s = minecraft:jungle_door
+	acacia [wood] door¦s = minecraft:acacia_door
+	dark oak [wood] door¦s = minecraft:dark_oak_door
+
+	[any] wood[en] door¦s = oak door, spruce door, birch door, jungle door, acacia door, dark oak door
+	[any] door¦s = iron door, any wood door
+
+	# Redstone torches
+	{attached} [lit] redstone torch¦es = minecraft:redstone_torch
+	{attached} unlit redstone torch¦es = minecraft:unlit_redstone_torch
+	any redstone torch¦es = lit redstone torch, unlit redstone torch
+
+	# Redstone lamp
+	lit redstone lamp¦s = minecraft:lit_redstone_lamp
+	[unlit] redstone lamp¦s = minecraft:redstone_lamp
+	any redstone lamp¦s = lit redstone lamp, unlit redstone lamp
+
+	# Pistons
+	{orientable} [(normal|non-sticky)] piston¦s = minecraft:piston
+	{orientable} sticky piston¦s = minecraft:sticky_piston
+	{orientable} piston head¦s = minecraft:piston_head
+
+	# Misc activatables/redstone components
+	note block¦s = minecraft:noteblock
+	tripwire hook¦s = minecraft:tripwire_hook
+	(piston extension|block 36|moving piston|moving block¦s) = minecraft:piston_head
+	hopper¦s = minecraft:hopper
+	(normal|uninverted) daylight (detector|sensor)¦s = minecraft:daylight_detector
+	inverted daylight (detector|sensor)¦s = minecraft:daylight_detector_inverted
+
+categories:
+	[any] daylight (detector|sensor)¦s = normal daylight detector, inverted daylight detector
+	[any] fence part = any fence, any gate # Fences come from decoration.sk
