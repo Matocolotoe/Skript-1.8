@@ -96,9 +96,6 @@ splash potions:
 	splash harming potion¦s = minecraft:potion {Damage:16460}
 	(strong|upgraded|level 2) splash harming potion¦s = minecraft:potion {Damage:16428}
 	
-	splash slow[ness] potion¦s = minecraft:potion {Damage:16426}
-	(extended|long) splash slow[ness] potion¦s = minecraft:potion {Damage:16458}
-	
 	splash water breathing potion¦s = minecraft:potion {Damage:16426}
 	(extended|long) splash water breathing potion¦s = minecraft:potion {Damage:16461}
 	
