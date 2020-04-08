@@ -39,26 +39,25 @@ this is because the plugin folder still contains 1.9+ materials. To fix this, do
 
 - restart the server and everything should be working
 
+## What to change ?
+**1. The line separator `||`**
 
-**1. The lore separator `||` isn't available anymore, you will have to use a list of texts.**
-
+In item lores, this one isn't available anymore, you will have to use a list of texts.
 
 For example, `1st line||2nd line||3rd line` will have to be `"1st line", "2nd line", "3rd line"`.
 
-
 If you have a lot of lores to update, just use CTRL+F to replace `||` by `", "` in all the files you want.
-
 
 This is not a complete fix, a lot warnings regarding `"and" missing` might appear.
 
 To disable them, set the `disable variable missing and/or warnings` to `true` in your `config.sk` file.
 
 
-**2. A new aliases system is out, so you might need to change them.**
+**2. New aliases system**
 
 
 The new aliases are available in the [skript-aliases](https://github.com/SkriptLang/skript-aliases) repository.
-This fork provides 1.8 aliases for splash potions (which changed in 1.9+), see details
+This fork provides 1.8 aliases for all legacy potions (which changed in 1.9+), see details
 [here](https://github.com/Matocolotoe/Skript-1.8/tree/master/skript-aliases/brewing.sk).
 
 Also, if you had custom aliases, backup them and delete your `aliases-english.sk` and `aliases-german.sk`, they aren't used anymore.
@@ -79,10 +78,10 @@ However, if your block/item does not have one, here is a working example : `set 
 Syntax : `%item type% with (damage|data) [value] %number%` or `%item type% damaged by %number%`
 
 
-**3. Scripts might take more time to load.**
+**3. Loading time**
 
 
-This is a known issue, especially if you are using items with long and explicit (i.e. without list variables) lores.
+The problem with scripts taking a long time to load is a known issue, especially if you are using items with long and explicit (i.e. without list variables) lores.
 
 ## Documentation
 Documentation is available [here](https://skriptlang.github.io/Skript) for the
@@ -91,3 +90,8 @@ latest version of Skript.
 ## Issues and other stuff
 Since this fork only provides retro-compatibility, issues regarding Skript will have to be posted
 on the [official repository](https://github.com/SkriptLang/Skript) of the plugin.
+
+However, don't hesistate to report any problem directly related to the plugin by posting
+an issue [here](https://github.com/Matocolotoe/Skript-1.8/issues).
+
+If you need any further help, join our [Discord server](https://discord.gg/yh3Z98m).

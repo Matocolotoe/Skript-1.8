@@ -40,25 +40,23 @@ Skript quelque part sur votre ordinateur pour ne rien perdre)
 - redémarrez le serveur et tout devrait fonctionner
 
 
-**1. Le séparateur de ligne `||` dans les lores n'est plus disponible, vous devrez utiliser une liste de textes.**
+**1. Séparateur de ligne `||`**
 
+Dans les lores des items, ce séparateur n'est plus disponible, vous devrez utiliser une liste de textes.**
 
 Par exemple, `1ère ligne||2ème ligne||3ème ligne` devra être `"1ère ligne", "2ème ligne", "3ème ligne"`.
 
-
 Si vous avez beaucoup de règles à mettre à jour, utilisez simplement CTRL+F pour remplacer `|||` par `", "` dans tous les fichiers concernés.
-
 
 Ce n'est pas un correctif complet, beaucoup d'avertissements concernant "et" manquants" peuvent apparaître.
 
 Pour les désactiver, mettez l'option `disable variable missing and/or warnings` sur `true` dans votre fichier `config.sk`.
 
 
-**2. Un nouveau système d'alias a été mis en place, vous devrez peut-être les modifier.**
-
+**2. Nouveau système d'alias**
 
 Les nouveaux alias sont disponibles dans le repository [skript-aliases](https://github.com/SkriptLang/skript-aliases).
-Cette fork possède des alias pour les potions jetables en 1.8 (qui ont changé en 1.9+), plus de détails
+Cette fork possède des alias pour toutes les anciennes potions de la 1.8 (qui ont changé en 1.9+), plus de détails
 [ici](https://github.com/Matocolotoe/Skript-1.8/tree/master/skript-aliases/brewing.sk).
 
 Par ailleurs, si vous aviez des alias personnalisés, sauvegardez-les et supprimez vos
@@ -70,7 +68,6 @@ aliases:
    combat items = any swords, bow, arrow
 ```
 
-
 Les data values comme `oak log:12` ne sont plus disponibles, une nouvelle expression a été ajoutée pour les supporter.
 
 La plupart des blocs ont maintenant des alias comme les logs à 6 faces, par exemple `oak bark`.
@@ -80,10 +77,9 @@ Sinon, si votre bloc/item n'en a pas, voici un exemple fonctionnel : `set event-
 Syntaxe : `%item type% with (damage|data) [value] %number%` ou `%item type% damaged by %number%`
 
 
-**3. Vos skripts peuvent prendre plus de temps à se charger.**
+**3. Temps de chargement**
 
-
-C'est un problème connu, surtout si vous utiliez des items avec des lores explicites (c'est-à-dire sans variables de type listes) longues.
+Le temps de chargement trop long des scripts est un problème connu, surtout si vous utiliez des items avec des lores explicites (c'est-à-dire sans variables de type listes) longues.
 
 ## Documentation
 La documentation est disponible [ici](https://skriptlang.github.io/Skript) pour la dernière version de Skript.
@@ -91,3 +87,8 @@ La documentation est disponible [ici](https://skriptlang.github.io/Skript) pour 
 ## Bugs et suggestions
 Puisque cette fork ne fournit que de la rétro-compatibilité, les bugs et suggestions à propos
 de Skript devront être postées sur le [repository officiel](https://github.com/SkriptLang/Skript) du plugin.
+
+Toutefois, n'hésitez pas à nous signaler tout problème directement lié au plugin
+en postant une issue [ici](https://github.com/Matocolotoe/Skript-1.8/issues).
+
+Si vous avez besoin d'une aide complémentaire, rejoignez notre [serveur Discord](https://discord.gg/yh3Z98m).
