@@ -1,104 +1,95 @@
 potions:
 	[(glass|empty)] bottle¦s = minecraft:glass_bottle
-	(bottle[s] of water|water bottle¦s) = minecraft:potion {"Potion": "minecraft:water"}
+	(bottle[s] of water|water bottle¦s) = minecraft:potion
 
-	{potion types}:
-		{default} = - # Match all potions
-		water = - {"Potion": "minecraft:water"}
-		thick = - {"Potion": "minecraft:thick"}
-		mundane = - {"Potion": "minecraft:mundane"}
-		awkward = - {"Potion": "minecraft:awkward"}
+	regen[eration] potion¦s = minecraft:potion {Damage:8193}
+	(strong|upgraded|level 2) regen[eration] potion¦s = minecraft:potion {Damage:8225}
+	(extended|long) regen[eration] potion¦s = minecraft:potion {Damage:8257}
 
-		night vision = - {"Potion": "minecraft:night_vision"}
-		(extended|long) night vision = - {"Potion": "minecraft:long_night_vision"}
+	(speed|swiftness) potion¦s = minecraft:potion {Damage:8194}
+	(strong|upgraded|level 2) (speed|swiftness) potion¦s = minecraft:potion {Damage:8226}
+	(extended|long) (speed|swiftness) potion¦s = minecraft:potion {Damage:8258}
 
-		invisibility = - {"Potion": "minecraft:invisibility"}
-		(extended|long) invisibility = - {"Potion": "minecraft:long_invisibility"}
+	fire resistance potion¦s = minecraft:potion {Damage:8227}
+	(extended|long) fire resistance potion¦s = minecraft:potion {Damage:8259}
 
-		(leaping|jumping) = - {"Potion": "minecraft:leaping"}
-		(extended|long) (leaping|jumping) = - {"Potion": "minecraft:long_leaping"}
-		(strong|upgraded|level 2) (leaping|jumping) = - {"Potion": "minecraft:strong_leaping"}
+	poison potion¦s = minecraft:potion {Damage:8196}
+	(strong|upgraded|level 2) poison potion¦s = minecraft:potion {Damage:8228}
+	(extended|long) poison potion¦s = minecraft:potion {Damage:8260}
 
-		fire resistance = - {"Potion": "minecraft:fire_resistance"}
-		(extended|long) fire resistance = - {"Potion": "minecraft:long_fire_resistance"}
+	heal(th|ing) potion¦s = minecraft:potion {Damage:8261}
+	(strong|upgraded|level 2) heal(th|ing) potion¦s = minecraft:potion {Damage:8229}
 
-		(speed|swiftness) = - {"Potion": "minecraft:swiftness"}
-		(extended|long) (speed|swiftness) = - {"Potion": "minecraft:long_swiftness"}
-		(strong|upgraded|level 2) (speed|swiftness) = - {"Potion": "minecraft:strong_swiftness"}
+	night vision potion¦s = minecraft:potion {Damage:8230}
+	(extended|long) night vision potion¦s = minecraft:potion {Damage:8262}
 
-		slow[ness] = - {"Potion": "minecraft:slowness"}
-		(extended|long) slow[ness] = - {"Potion": "minecraft:long_slowness"}
-		(strong|upgraded|level 2) slow[ness] = - {"Potion": "minecraft:strong_slowness"}
+	weak(ness|ening) potion¦s = minecraft:potion {Damage:8232}
+	(extended|long) weak(ness|ening) potion¦s = minecraft:potion {Damage:8264}
 
-		water breathing = - {"Potion": "minecraft:water_breathing"}
-		(extended|long) water breathing = - {"Potion": "minecraft:long_water_breathing"}
+	strength potion¦s = minecraft:potion {Damage:8201}
+	(strong|upgraded|level 2) strength potion¦s = minecraft:potion {Damage:8233}
+	(extended|long) strength potion¦s = minecraft:potion {Damage:8265}
 
-		heal(th|ing) = - {"Potion": "minecraft:healing"}
-		(strong|upgraded|level 2) heal(th|ing) = - {"Potion": "minecraft:strong_healing"}
+	slow[ness] potion¦s = minecraft:potion {Damage:8234}
+	(extended|long) slow[ness] potion¦s = minecraft:potion {Damage:8266}
 
-		harming = - {"Potion": "minecraft:harming"}
-		(strong|upgraded|level 2) harming = - {"Potion": "minecraft:strong_harming"}
+	(leaping|jumping) potion¦s = minecraft:potion {Damage:8203}
+	(strong|upgraded|level 2) (leaping|jumping) potion¦s = minecraft:potion {Damage:8235}
+	(extended|long) (leaping|jumping) potion¦s = minecraft:potion {Damage:8267}
 
-		poison[ing] = - {"Potion": "minecraft:poison"}
-		(extended|long) poison[ing] = - {"Potion": "minecraft:long_poison"}
-		(strong|upgraded|level 2) poison[ing] = - {"Potion": "minecraft:strong_poison"}
+	harming potion¦s = minecraft:potion {Damage:8268}
+	(strong|upgraded|level 2) harming potion¦s = minecraft:potion {Damage:8236}
 
-		regen[eration] = - {"Potion": "minecraft:regeneration"}
-		(extended|long) regen[eration] = - {"Potion": "minecraft:long_regeneration"}
-		(strong|upgraded|level 2) regen[eration] = - {"Potion": "minecraft:strong_regeneration"}
+	water breathing potion¦s = minecraft:potion {Damage:8237}
+	(extended|long) water breathing potion¦s = minecraft:potion {Damage:8269}
 
-		strength = - {"Potion": "minecraft:strength"}
-		(extended|long) strength = - {"Potion": "minecraft:long_strength"}
-		(strong|upgraded|level 2) strength = - {"Potion": "minecraft:strong_strength"}
+	invisibility potion¦s = minecraft:potion {Damage:8238}
+	(extended|long) invisibility potion¦s = minecraft:potion {Damage:8270}
 
-		weak(ness|ening) = - {"Potion": "minecraft:weakness"}
-		(extended|long) weak(ness|ening) = - {"Potion": "minecraft:long_weakness"}
-
-	(potion¦s of {potion types}|{potion types} potion¦s) = minecraft:potion
-	potion¦s = minecraft:potion
+	[any] potion = regen potion, strong regen potion, long regen potion, speed potion, strong speed potion, long speed potion, fire resistance potion, long fire resistance potion, poison potion, strong poison potion, long poison potion, healing potion, strong healing potion, night vision potion, long night vision potion, weakness potion, long weakness potion, strength potion, strong strength potion, long strength potion, slowness potion, long slowness potion, leaping potion, strong leaping potion, long leaping potion, harming potion, strong harming potion, slowness potion, long slowness potion, water breathing potion, long water breathing potion, invisibility potion, long invisibility potion
 
 splash potions:
 	splash regen[eration] potion¦s = minecraft:potion {Damage:16385}
 	(strong|upgraded|level 2) splash regen[eration] potion¦s = minecraft:potion {Damage:16417}
 	(extended|long) splash regen[eration] potion¦s = minecraft:potion {Damage:16449}
-	
+
 	splash (speed|swiftness) potion¦s = minecraft:potion {Damage:16386}
 	(strong|upgraded|level 2) splash (speed|swiftness) potion¦s = minecraft:potion {Damage:16418}
 	(extended|long) splash (speed|swiftness) potion¦s = minecraft:potion {Damage:16450}
-	
+
 	splash fire resistance potion¦s = minecraft:potion {Damage:16419}
 	(extended|long) splash fire resistance potion¦s = minecraft:potion {Damage:16451}
-	
+
 	splash poison potion¦s = minecraft:potion {Damage:16388}
 	(strong|upgraded|level 2) splash poison potion¦s = minecraft:potion {Damage:16420}
 	(extended|long) splash poison potion¦s = minecraft:potion {Damage:16452}
-	
+
 	splash heal(th|ing) potion¦s = minecraft:potion {Damage:16453}
 	(strong|upgraded|level 2) splash heal(th|ing) potion¦s = minecraft:potion {Damage:16421}
-	
+
 	splash night vision potion¦s = minecraft:potion {Damage:16422}
 	(extended|long) splash night vision potion¦s = minecraft:potion {Damage:16454}
-	
+
 	splash weak(ness|ening) potion¦s = minecraft:potion {Damage:16424}
 	(extended|long) splash weak(ness|ening) potion¦s = minecraft:potion {Damage:16456}
-	
+
 	splash strength potion¦s = minecraft:potion {Damage:16393}
 	(strong|upgraded|level 2) splash strength potion¦s = minecraft:potion {Damage:16425}
 	(extended|long) splash strength potion¦s = minecraft:potion {Damage:16457}
-	
+
 	splash slow[ness] potion¦s = minecraft:potion {Damage:16426}
 	(extended|long) splash slow[ness] potion¦s = minecraft:potion {Damage:16458}
-	
+
 	splash (leaping|jumping) potion¦s = minecraft:potion {Damage:16395}
 	(strong|upgraded|level 2) splash (leaping|jumping) potion¦s = minecraft:potion {Damage:16427}
 	(extended|long) splash (leaping|jumping) potion¦s = minecraft:potion {Damage:16459}
-	
+
 	splash harming potion¦s = minecraft:potion {Damage:16460}
 	(strong|upgraded|level 2) splash harming potion¦s = minecraft:potion {Damage:16428}
-	
+
 	splash water breathing potion¦s = minecraft:potion {Damage:16426}
 	(extended|long) splash water breathing potion¦s = minecraft:potion {Damage:16461}
-	
+
 	splash invisibility potion¦s = minecraft:potion {Damage:16430}
 	(extended|long) splash invisibility potion¦s = minecraft:potion {Damage:16462}
 
