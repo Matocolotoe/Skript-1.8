@@ -90,14 +90,21 @@ dependencies {
 }
 
 processResources {
+	version = System.getenv("SKRIPT_VERSION") == null ? project.property("version") : System.getenv("SKRIPT_VERSION")
+	def channel = "stable"
+	if (version.contains("alpha")) {
+		channel = "alpha"
+	} else if (version.contains("beta")) {
+		channel = "beta"
+	}
 	filter ReplaceTokens, tokens: [
-		"version": System.getenv("SKRIPT_VERSION") == null ? project.property("version") : System.getenv("SKRIPT_VERSION"),
-		'today': "unknown", // Don't leak information about system this was built on
-		"release-flavor": "selfbuilt-unknown", // Note: 'selfbuilt' prefix makes updater report a custom build
-		"release-channel": "none", // No updates, so anything else wouldn't make sense
-		"release-updater": "ch.njol.skript.update.NoUpdateChecker", // Disable update checking
-		"release-source": "",
-		"release-download": "null"
+		"version": version,
+		"today": "" + LocalDate.now(),
+		"release-flavor": "github-matocolotoe-1.8", // This 1.8 fork
+		"release-channel": channel, // Release channel, see above
+		"release-updater": "ch.njol.skript.update.GithubChecker", // Github API client
+		"release-source": "https://api.github.com/repos/Matocolotoe/Skript-1.8/releases", // Github API URL
+		"release-download": "null" // Update checker will figure it out
 	]
 }
 
