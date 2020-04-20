@@ -43,32 +43,3 @@ out/
 
 # [Maybe ECJ:] compiled stuff lands here
 **/bin/
-
-# Files that must not change to keep 1.8 compatibility
-# Changes done on them will be merged manually on GitHub
-src/main/resources/materials/*
-src/main/java/ch/njol/skript/bukkitutil/BukkitUnsafe.java
-src/main/java/ch/njol/skript/bukkitutil/ClickEventTracker.java
-src/main/java/ch/njol/skript/entity/BoatData.java
-src/main/java/ch/njol/skript/events/EvtClick.java
-src/main/java/ch/njol/skript/hooks/biomes/BiomeMapUtil.java
-
-# Files adding features not available in 1.8
-src/main/java/ch/njol/skript/conditions/CondHasCustomModelData.java
-src/main/java/ch/njol/skript/conditions/CondIsRipting.java
-src/main/java/ch/njol/skript/expressions/ExprClientViewDistance.java
-src/main/java/ch/njol/skript/expressions/ExprGlidingState.java
-src/main/java/ch/njol/skript/expressions/ExprGlowing.java
-src/main/java/ch/njol/skript/expressions/ExprGravity.java
-src/main/java/ch/njol/skript/expressions/ExprItemWithCustomModelData.java
-src/main/java/ch/njol/skript/expressions/ExprLastLoadedServerIcon.java
-src/main/java/ch/njol/skript/expressions/ExprLastResourcePackResponse.java
-src/main/java/ch/njol/skript/expressions/ExprOffTool.java
-src/main/java/ch/njol/skript/expressions/ExprPlayerViewDistance.java
-src/main/java/ch/njol/skript/entity/BeeData.java
-src/main/java/ch/njol/skript/entity/FishData.java
-src/main/java/ch/njol/skript/entity/FoxData.java
-src/main/java/ch/njol/skript/entity/LlamaData.java
-src/main/java/ch/njol/skript/entity/PandaData.java
-src/main/java/ch/njol/skript/entity/ParrotData.java
-src/main/java/ch/njol/skript/entity/TropicalFishData.java
