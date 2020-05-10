@@ -22,64 +22,9 @@ De plus, les hooks à FAWE ou WorldGuard ne sont pas disponibles pour le moment.
 ## Téléchargements
 Vous pouvez trouver les téléchargements dans la [page des releases](https://github.com/Matocolotoe/Skript-1.8/releases).
 
-## Passer d'une version plus vieille à celle-ci
-Si vous vous mettez à jour de Skript 2.2 ou plus ancien vers ce plugin, vous devrez changer des choses dans vos skripts.
-
-Si vous passez de la 1.9+ (avec une version officielle) à la 1.8 (avec ce plugin), une grosse erreur peut apparaître. Si c'est le cas,
-c'est parce que le dossier du plugin contient les matériaux de la 1.9+. Pour résoudre ce problème, procédez comme suit :
-
-- sauvegardez vos scripts, fichiers de configuration et fichiers.csv (par exemple, copiez ou téléchargez votre dossier
-Skript quelque part sur votre ordinateur pour ne rien perdre)
-
-- arrêtez le serveur et supprimez le dossier Skript
-
-- démarrez le serveur et laissez le plugin se charger et créer ses fichiers
-
-- arrêtez le serveur et téléchargez vos scripts, fichiers config.sk et.csv à l'endroit où ils se trouvaient
-
-- redémarrez le serveur et tout devrait fonctionner
-
-
-**1. Séparateur de ligne `||`**
-
-Dans les lores des items, ce séparateur n'est plus disponible, vous devrez utiliser une liste de textes.**
-
-Par exemple, `1ère ligne||2ème ligne||3ème ligne` devra être `"1ère ligne", "2ème ligne", "3ème ligne"`.
-
-Si vous avez beaucoup de règles à mettre à jour, utilisez simplement CTRL+F pour remplacer `|||` par `", "` dans tous les fichiers concernés.
-
-Ce n'est pas un correctif complet, beaucoup d'avertissements concernant "et" manquants" peuvent apparaître.
-
-Pour les désactiver, mettez l'option `disable variable missing and/or warnings` sur `true` dans votre fichier `config.sk`.
-
-
-**2. Nouveau système d'alias**
-
-Les nouveaux alias sont disponibles dans le repository [skript-aliases](https://github.com/SkriptLang/skript-aliases).
-Cette fork possède des alias pour toutes les anciennes potions de la 1.8 (qui ont changé en 1.9+), plus de détails
-[ici](https://github.com/Matocolotoe/Skript-1.8/tree/master/skript-aliases/brewing.sk).
-
-Par ailleurs, si vous aviez des alias personnalisés, sauvegardez-les et supprimez vos
-fichiers `aliases-english.sk` et `aliases-german.sk`, ils ne sont plus utilisés.
-
-Pour enregistrer des alias custom, vous devrez les mettre tout en haut de votre skript qui les utilise (exemple ci-dessous).
-```
-aliases:
-   combat items = any swords, bow, arrow
-```
-
-Les data values comme `oak log:12` ne sont plus disponibles, une nouvelle expression a été ajoutée pour les supporter.
-
-La plupart des blocs ont maintenant des alias comme les logs à 6 faces, par exemple `oak bark`.
-
-Sinon, si votre bloc/item n'en a pas, voici un exemple fonctionnel : `set event-block to cauldron with data value 1`.
-
-Syntaxe : `%item type% with (damage|data) [value] %number%` ou `%item type% damaged by %number%`
-
-
-**3. Temps de chargement**
-
-Le temps de chargement trop long des scripts est un problème connu, surtout si vous utiliez des items avec des lores explicites (c'est-à-dire sans variables de type listes) longues.
+## Tutoriels
+- [Addons](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Addons.md)
+- [Mettre à jour vos scripts](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Updates.md) (pour Skript-1.8)
 
 ## Documentation
 La documentation est disponible [ici](https://skriptlang.github.io/Skript) pour la dernière version de Skript.
