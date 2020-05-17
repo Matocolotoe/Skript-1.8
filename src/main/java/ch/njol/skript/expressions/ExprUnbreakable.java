@@ -19,13 +19,9 @@
  */
 package ch.njol.skript.expressions;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 import java.util.Arrays;
 
 import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -47,22 +43,8 @@ import ch.njol.util.Kleenean;
 @Since("2.2-dev13b")
 public class ExprUnbreakable extends PropertyExpression<ItemType, ItemType> {
 
-	private static final boolean USE_DEPRECATED_METHOD = !Skript.methodExists(ItemMeta.class, "setUnbreakable", boolean.class);
-	
-	@Nullable
-	private static final MethodHandle setUnbreakableMethod;
-	
 	static {
 		Skript.registerExpression(ExprUnbreakable.class, ItemType.class, ExpressionType.PROPERTY, "unbreakable %itemtypes%");
-		
-		MethodHandle handle;
-		try {
-			handle = MethodHandles.lookup().findVirtual(Class.forName("package org.bukkit.inventory.meta.ItemMeta.Spigot"),
-					"setUnbreakable", MethodType.methodType(void.class, boolean.class));
-		} catch (NoSuchMethodException | IllegalAccessException | ClassNotFoundException e) {
-			handle = null;
-		}
-		setUnbreakableMethod = handle;
 	}
 	
 	@SuppressWarnings({"unchecked", "null"})
@@ -75,21 +57,10 @@ public class ExprUnbreakable extends PropertyExpression<ItemType, ItemType> {
 	@Override
 	protected ItemType[] get(final Event e, final ItemType[] source) {
 		return get(source, itemType -> {
-			ItemType clone = itemType.clone();
-
-			ItemMeta meta = clone.getItemMeta();
-			if (USE_DEPRECATED_METHOD) {
-				assert setUnbreakableMethod != null;
-				try {
-					setUnbreakableMethod.invoke(true);
-				} catch (Throwable e1) {
-					Skript.exception(e1);
-				}
-			} else {
-				meta.setUnbreakable(true);
-			}
+			final ItemType clone = itemType.clone();
+			final ItemMeta meta = clone.getItemMeta();
+			meta.spigot().setUnbreakable(true);
 			clone.setItemMeta(meta);
-
 			return clone;
 		});
 	}
