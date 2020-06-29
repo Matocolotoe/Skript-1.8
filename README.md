@@ -25,7 +25,7 @@ You can find the downloads in the [releases page](https://github.com/Matocolotoe
 
 ## Tutorials
 - [Addons](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/english/Addons.md)
-- [Updating your scripts](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/english/Updates.md) (pour Skript-1.8)
+- [Updating your scripts](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/english/Updates.md) (for Skript-1.8)
 
 ## Documentation
 Documentation is available [here](https://skriptlang.github.io/Skript) for the latest version of Skript.
