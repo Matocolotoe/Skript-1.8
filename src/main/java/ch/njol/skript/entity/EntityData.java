@@ -34,7 +34,9 @@ import org.bukkit.World;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.PigZombie;
+import org.bukkit.entity.Piglin;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zoglin;
 import org.bukkit.entity.Zombie;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -69,12 +71,12 @@ import ch.njol.yggdrasil.YggdrasilSerializable.YggdrasilExtendedSerializable;
  */
 @SuppressWarnings("rawtypes")
 public abstract class EntityData<E extends Entity> implements SyntaxElement, YggdrasilExtendedSerializable {// TODO extended horse support, zombie villagers // REMIND unit
-
+	
 	public final static String LANGUAGE_NODE = "entities";
 	
 	public final static Message m_age_pattern = new Message(LANGUAGE_NODE + ".age pattern");
 	public final static Adjective m_baby = new Adjective(LANGUAGE_NODE + ".age adjectives.baby"),
-			m_adult = new Adjective(LANGUAGE_NODE + ".age adjectives.adult");
+		m_adult = new Adjective(LANGUAGE_NODE + ".age adjectives.adult");
 	
 	// must be here to be initialised before 'new SimpleLiteral' is called in the register block below
 	private final static List<EntityDataInfo<EntityData<?>>> infos = new ArrayList<>();
@@ -117,7 +119,7 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 			throw new StreamCorruptedException();
 		}
 		
-//		return getInfo((Class<? extends EntityData<?>>) d.getClass()).codeName + ":" + d.serialize();
+		//		return getInfo((Class<? extends EntityData<?>>) d.getClass()).codeName + ":" + d.serialize();
 		@SuppressWarnings("null")
 		@Override
 		@Deprecated
@@ -149,37 +151,37 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 	
 	static {
 		Classes.registerClass(new ClassInfo<>(EntityData.class, "entitydata")
-				.user("entity ?types?")
-				.name("Entity Type")
-				.description("The type of an <a href='#entity'>entity</a>, e.g. player, wolf, powered creeper, etc.")
-				.usage("<i>Detailed usage will be added eventually</i>")
-				.examples("victim is a cow",
-						"spawn a creeper")
-				.since("1.3")
-				.defaultExpression(new SimpleLiteral<EntityData>(new SimpleEntityData(Entity.class), true))
-				.before("entitytype")
-				.parser(new Parser<EntityData>() {
-					@Override
-					public String toString(final EntityData d, final int flags) {
-						return d.toString(flags);
-					}
-					
-					@Override
-					@Nullable
-					public EntityData parse(final String s, final ParseContext context) {
-						return EntityData.parse(s);
-					}
-					
-					@Override
-					public String toVariableNameString(final EntityData o) {
-						return "entitydata:" + o.toString();
-					}
-					
-					@Override
-					public String getVariableNamePattern() {
-						return "entitydata:.+";
-					}
-				}).serializer(serializer));
+			.user("entity ?types?")
+			.name("Entity Type")
+			.description("The type of an <a href='#entity'>entity</a>, e.g. player, wolf, powered creeper, etc.")
+			.usage("<i>Detailed usage will be added eventually</i>")
+			.examples("victim is a cow",
+				"spawn a creeper")
+			.since("1.3")
+			.defaultExpression(new SimpleLiteral<EntityData>(new SimpleEntityData(Entity.class), true))
+			.before("entitytype")
+			.parser(new Parser<EntityData>() {
+				@Override
+				public String toString(final EntityData d, final int flags) {
+					return d.toString(flags);
+				}
+				
+				@Override
+				@Nullable
+				public EntityData parse(final String s, final ParseContext context) {
+					return EntityData.parse(s);
+				}
+				
+				@Override
+				public String toVariableNameString(final EntityData o) {
+					return "entitydata:" + o.toString();
+				}
+				
+				@Override
+				public String getVariableNamePattern() {
+					return "entitydata:.+";
+				}
+			}).serializer(serializer));
 	}
 	
 	private final static class EntityDataInfo<T extends EntityData<?>> extends SyntaxElementInfo<T> implements LanguageChangeListener {
@@ -300,7 +302,7 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 	
 	/**
 	 * Returns the super type of this entity data, e.g. 'wolf' for 'angry wolf'.
-	 * 
+	 *
 	 * @return The supertype of this entity data. Must not be null.
 	 */
 	public abstract EntityData getSuperType();
@@ -389,7 +391,7 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 	
 	/**
 	 * Prints errors.
-	 * 
+	 *
 	 * @param s String with optional indefinite article at the beginning
 	 * @return The parsed entity data
 	 */
@@ -402,7 +404,7 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 	
 	/**
 	 * Prints errors.
-	 * 
+	 *
 	 * @param s
 	 * @return The parsed entity data
 	 */
@@ -420,20 +422,32 @@ public abstract class EntityData<E extends Entity> implements SyntaxElement, Ygg
 			final E e = loc.getWorld().spawn(loc, getType());
 			if (e == null)
 				throw new IllegalArgumentException();
-			if (baby.isTrue()){
-				if(e instanceof Ageable)
+			if (baby.isTrue()) {
+				if (e instanceof Ageable)
 					((Ageable) e).setBaby();
-				else if(e instanceof Zombie)
+				else if (e instanceof Zombie)
 					((Zombie) e).setBaby(true);
-				else if(e instanceof PigZombie)
+				else if (e instanceof PigZombie)
 					((PigZombie) e).setBaby(true);
-			}else if(baby.isFalse()){
-				if(e instanceof Ageable)
+				else if (Skript.isRunningMinecraft(1, 16)) {
+					if (e instanceof Piglin)
+						((Piglin) e).setBaby(true);
+					else if (e instanceof Zoglin)
+						((Zoglin) e).setBaby(true);
+				}
+			} else if (baby.isFalse()) {
+				if (e instanceof Ageable)
 					((Ageable) e).setAdult();
-				else if(e instanceof Zombie)
+				else if (e instanceof Zombie)
 					((Zombie) e).setBaby(false);
-				else if(e instanceof PigZombie)
+				else if (e instanceof PigZombie)
 					((PigZombie) e).setBaby(false);
+				else if (Skript.isRunningMinecraft(1, 16)) {
+					if (e instanceof Piglin)
+						((Piglin) e).setBaby(false);
+					else if (e instanceof Zoglin)
+						((Zoglin) e).setBaby(false);
+				}
 			}
 			set(e);
 			return e;

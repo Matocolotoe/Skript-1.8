@@ -34,6 +34,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.PistonMoveReaction;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
@@ -43,6 +44,8 @@ import org.bukkit.util.Vector;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 
+import com.destroystokyo.paper.block.BlockSoundGroup;
+
 import ch.njol.skript.Skript;
 import ch.njol.skript.bukkitutil.block.BlockCompat;
 import ch.njol.skript.bukkitutil.block.MagicBlockCompat;
@@ -51,7 +54,7 @@ import ch.njol.skript.bukkitutil.block.MagicBlockCompat;
  * A block that gets all data from the world, but either delays
  * any changes by 1 tick of reflects them on a given BlockState
  * depending on which constructor is used.
- * 
+ *
  */
 public class DelayedChangeBlock implements Block {
 	
@@ -194,8 +197,8 @@ public class DelayedChangeBlock implements Block {
 	@Override
 	public BlockState getState() {
 		return b.getState();
-	}	
-
+	}
+	
 	@Override
 	public BlockState getState(boolean useSnapshot) {
 		return b.getState(useSnapshot);
@@ -286,7 +289,7 @@ public class DelayedChangeBlock implements Block {
 	}
 	
 	@Override
-	public boolean breakNaturally(final ItemStack tool) {
+	public boolean breakNaturally(@Nullable ItemStack tool) {
 		if (newState != null) {
 			return false;
 		} else {
@@ -301,13 +304,33 @@ public class DelayedChangeBlock implements Block {
 	}
 	
 	@Override
+	public boolean breakNaturally(ItemStack tool, boolean triggerEffect) {
+		if (newState != null) {
+			return false;
+		} else {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Skript.getInstance(), new Runnable() {
+				@Override
+				public void run() {
+					b.breakNaturally(tool, triggerEffect);
+				}
+			});
+			return true;
+		}
+	}
+	
+	@Override
 	public Collection<ItemStack> getDrops() {
 		return b.getDrops();
 	}
 	
 	@Override
-	public Collection<ItemStack> getDrops(final ItemStack tool) {
+	public Collection<ItemStack> getDrops(@Nullable ItemStack tool) {
 		return b.getDrops(tool);
+	}
+	
+	@Override
+	public Collection<ItemStack> getDrops(ItemStack tool, @Nullable Entity entity) {
+		return b.getDrops(tool, entity);
 	}
 	
 	@Nullable
@@ -323,7 +346,7 @@ public class DelayedChangeBlock implements Block {
 		}
 		return loc;
 	}
-
+	
 	@Override
 	public void setType(Material type, boolean applyPhysics) {
 		if (newState != null) {
@@ -337,17 +360,17 @@ public class DelayedChangeBlock implements Block {
 			});
 		}
 	}
-
+	
 	@Override
 	public BlockData getBlockData() {
 		return b.getBlockData();
 	}
-
+	
 	@Override
 	public void setBlockData(BlockData data) {
 		setBlockData(data, true);
 	}
-
+	
 	@Override
 	public void setBlockData(BlockData data, boolean applyPhysics) {
 		if (newState != null) {
@@ -367,9 +390,14 @@ public class DelayedChangeBlock implements Block {
 	public boolean isPassable() {
 		return isPassable;
 	}
-
+	
 	@Override
 	public BoundingBox getBoundingBox() {
 		return b.getBoundingBox();
+	}
+	
+	@Override
+	public BlockSoundGroup getSoundGroup() {
+		return b.getSoundGroup();
 	}
 }

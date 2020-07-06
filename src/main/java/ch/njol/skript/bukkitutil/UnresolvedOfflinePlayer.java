@@ -25,7 +25,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -40,7 +43,7 @@ import ch.njol.util.Closeable;
  * Should only be used in {@link Commands} and the parser for offline players.
  * <p>
  * Will produce {@link NullPointerException}s if used incorrectly.
- * 
+ *
  * @author Peter Güttinger
  */
 @SuppressWarnings("null")
@@ -53,7 +56,7 @@ public class UnresolvedOfflinePlayer implements OfflinePlayer {
 		resolverThread = Skript.newThread(new Runnable() {
 			@SuppressWarnings({"deprecation", "unused"})
 			@Override
-			public void run() {				
+			public void run() {
 				while (true) {
 					if (toResolve == null) {
 						toResolve = new LinkedBlockingQueue<>();
@@ -166,15 +169,105 @@ public class UnresolvedOfflinePlayer implements OfflinePlayer {
 	public Location getBedSpawnLocation() {
 		return bukkitOfflinePlayer.getBedSpawnLocation();
 	}
-
+	
 	@Override
 	public long getLastLogin() {
 		return bukkitOfflinePlayer.getLastLogin();
 	}
-
+	
 	@Override
 	public long getLastSeen() {
 		return bukkitOfflinePlayer.getLastSeen();
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic) throws IllegalArgumentException {
+		bukkitOfflinePlayer.incrementStatistic(statistic);
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic) throws IllegalArgumentException {
+		bukkitOfflinePlayer.decrementStatistic(statistic);
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic, int amount) throws IllegalArgumentException {
+		bukkitOfflinePlayer.incrementStatistic(statistic, amount);
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic, int amount) throws IllegalArgumentException {
+		bukkitOfflinePlayer.decrementStatistic(statistic, amount);
+	}
+	
+	@Override
+	public void setStatistic(Statistic statistic, int newValue) throws IllegalArgumentException {
+		bukkitOfflinePlayer.setStatistic(statistic, newValue);
+	}
+	
+	@Override
+	public int getStatistic(Statistic statistic) throws IllegalArgumentException {
+		return bukkitOfflinePlayer.getStatistic(statistic);
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+		bukkitOfflinePlayer.incrementStatistic(statistic, material);
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+		bukkitOfflinePlayer.decrementStatistic(statistic, material);
+	}
+	
+	@Override
+	public int getStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+		return bukkitOfflinePlayer.getStatistic(statistic, material);
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic, Material material, int amount) throws IllegalArgumentException {
+		bukkitOfflinePlayer.incrementStatistic(statistic, material, amount);
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic, Material material, int amount) throws IllegalArgumentException {
+		bukkitOfflinePlayer.decrementStatistic(statistic, material, amount);
+	}
+	
+	@Override
+	public void setStatistic(Statistic statistic, Material material, int newValue) throws IllegalArgumentException {
+		bukkitOfflinePlayer.setStatistic(statistic, material, newValue);
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+	
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+		bukkitOfflinePlayer.decrementStatistic(statistic, entityType);
+	}
+	
+	@Override
+	public int getStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+		return bukkitOfflinePlayer.getStatistic(statistic, entityType);
+	}
+	
+	@Override
+	public void incrementStatistic(Statistic statistic, EntityType entityType, int amount) throws IllegalArgumentException {
+		bukkitOfflinePlayer.incrementStatistic(statistic, entityType, amount);
+	}
+	
+	@Override
+	public void decrementStatistic(Statistic statistic, EntityType entityType, int amount) {
+		bukkitOfflinePlayer.decrementStatistic(statistic, entityType, amount);
+	}
+	
+	@Override
+	public void setStatistic(Statistic statistic, EntityType entityType, int newValue) {
+		bukkitOfflinePlayer.setStatistic(statistic, entityType, newValue);
 	}
 	
 }
