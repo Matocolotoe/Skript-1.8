@@ -19,6 +19,8 @@
  */
 package ch.njol.skript.expressions;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import org.bukkit.event.Event;
@@ -42,7 +44,7 @@ import ch.njol.util.Kleenean;
 @Examples("unbreakable iron sword #Creates unbreakable iron sword")
 @Since("2.2-dev13b")
 public class ExprUnbreakable extends PropertyExpression<ItemType, ItemType> {
-
+	
 	static {
 		Skript.registerExpression(ExprUnbreakable.class, ItemType.class, ExpressionType.PROPERTY, "unbreakable %itemtypes%");
 	}
@@ -57,19 +59,33 @@ public class ExprUnbreakable extends PropertyExpression<ItemType, ItemType> {
 	@Override
 	protected ItemType[] get(final Event e, final ItemType[] source) {
 		return get(source, itemType -> {
-			final ItemType clone = itemType.clone();
-			final ItemMeta meta = clone.getItemMeta();
-			meta.spigot().setUnbreakable(true);
+			ItemType clone = itemType.clone();
+			ItemMeta meta = clone.getItemMeta();
+			
+			try {
+				final Method spigot = meta.getClass().getDeclaredMethod("spigot");
+				spigot.setAccessible(true);
+				
+				final Object instance = spigot.invoke(meta);
+				final Class<?> c = instance.getClass();
+				final Method setUnbreakable = c.getDeclaredMethod("setUnbreakable", boolean.class);
+				
+				setUnbreakable.setAccessible(true);
+				setUnbreakable.invoke(instance, true);
+			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+				ex.printStackTrace();
+			}
+			
 			clone.setItemMeta(meta);
 			return clone;
 		});
 	}
-
+	
 	@Override
 	public Class<? extends ItemType> getReturnType() {
 		return ItemType.class;
 	}
-
+	
 	@Override
 	public String toString(@Nullable Event e, boolean debug) {
 		if (e == null)

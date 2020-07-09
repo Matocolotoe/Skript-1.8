@@ -19,6 +19,10 @@
  */
 package ch.njol.skript.effects;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
@@ -31,11 +35,7 @@ import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
-import ch.njol.skript.util.chat.BungeeConverter;
-import ch.njol.skript.util.chat.ChatMessages;
 import ch.njol.util.Kleenean;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 @Name("Action Bar")
 @Description("Sends an action bar message to the given player(s).")
@@ -43,6 +43,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 @Since("2.3")
 public class EffActionBar extends Effect {
 
+	private static final String version = "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().substring(23);
+	
 	static {
 		Skript.registerEffect(EffActionBar.class, "send [the] action bar [with text] %string% to %players%");
 	}
@@ -61,13 +63,31 @@ public class EffActionBar extends Effect {
 		return true;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void execute(final Event e) {
 		String msg = message.getSingle(e);
 		assert msg != null;
+		
+		Constructor<?> constructor;
+		Object a, packet = null;
+		
+		try {
+			final Class<?> baseComponentClass = Class.forName(version + ".IChatBaseComponent");
+			constructor = Class.forName(version + ".PacketPlayOutChat").getConstructor(baseComponentClass, byte.class);
+			a = baseComponentClass.getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + msg + "\"}");
+			packet = constructor.newInstance(a, (byte) 2);
+		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchMethodException ex) {
+			ex.printStackTrace();
+		}
+		
 		for (Player player : recipients.getArray(e)) {
-			player.spigot().sendMessage(ChatMessageType.ACTION_BAR, BungeeConverter.convert(ChatMessages.parseToArray(msg)));
+			try {
+				final Object entity = player.getClass().getMethod("getHandle").invoke(player);
+				final Object playerConnection = entity.getClass().getField("playerConnection").get(entity);
+				playerConnection.getClass().getMethod("sendPacket", Class.forName(version + ".Packet")).invoke(playerConnection, packet);
+			} catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | NoSuchFieldException ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 
