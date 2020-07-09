@@ -27,4 +27,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Skript.jar
-        path: Skript.jar
+        path: build/libs/Skript.jar
