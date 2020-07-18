@@ -1,10 +1,13 @@
-# Mise à jour du script 2.2
+# Mise à jour depuis Skript v2.2
 Si vous passez de la version 2.2 de Skript ou d'une version antérieure à ce plugin, vous devez modifier plusieurs éléments de vos scripts.
 
 ## Changement à partir de Minecraft 1.9+
-Dans le cas d'un changement de version à partir de Minecraft 1.9+, une erreur conséquente peut apparaître. Si c'est le cas, sauvegardez votre dossier `scripts`, supprimez-le et démarrez votre serveur, puis restaurez son contenu.
+Dans le cas d'un changement de version à partir de Minecraft 1.9+, une erreur conséquente peut apparaître.
+Si c'est le cas, sauvegardez votre dossier `scripts`, supprimez-le et démarrez votre serveur, puis restaurez son contenu.
 
 ## Que faut-il changer ?
+
+Si vous passez uniquement d'une vieille version de Skript à celle-ci, vous devrez suivre les instructions ci-dessous.
 
 ### Séparateur de ligne
 
@@ -33,7 +36,7 @@ Les data values comme "oak log:12" ne sont plus disponibles, une nouvelle expres
 
 La plupart des items à data values ont maintenant des alias. Cependant, si le vôtre n'en a pas, utilisez l'expression [damaged item](https://skriptlang.github.io/Skript/expressions.html#ExprDamagedItem).
 
-
 ### Temps de chargement
 
-Le problème des scripts qui prennent beaucoup de temps à charger est connu, surtout si vous utilisez des items avec des lores longues et explicites (c'est-à-dire sans variables "listes").
+Le problème des scripts qui prennent beaucoup de temps à se charger est connu et a été introduit par Skript v2.3.
+Il arrive surtout si vous utilisez des items avec des lores longues et explicites (c'est-à-dire sans variables "listes").

@@ -4,11 +4,11 @@ Cliquez [ici](https://github.com/SkriptLang/Skript/releases) si vous cherchez la
 Skript est un plugin pour Paper/Spigot, permettant aux admins de serveurs et autres
 utilisateurs de modifier leurs serveurs sans apprendre Java. Cela peut également
 vous servir si vous *êtes* développeur Java, certaines tâches sont plus rapides
-à exécuter via Skript, donc vous pouvez l'utilisez pour faire des prototypes, etc.
+à exécuter via Skript, vous pouvez donc l'utiliser pour faire des prototypes, etc.
 
 Cette fork GitHub de Skript est basée sur celle de SkriptLang, elle-même basée
-sur les améliorations faites par Mirreski, elle-même construite sur la version originale
-de Njol.
+sur les améliorations faites par Mirreski, elle-même construite sur la version
+originale de Njol.
 
 ## Pré-requis
 Skript a besoin de **Spigot** pour fonctionner. Vous l'avez bien compris, Bukkit ne
