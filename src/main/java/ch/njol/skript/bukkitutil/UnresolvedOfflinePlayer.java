@@ -108,7 +108,6 @@ public class UnresolvedOfflinePlayer implements OfflinePlayer {
 	}
 	
 	@Override
-	@SuppressWarnings("deprecation")
 	@Nullable
 	public Player getPlayer() {
 		return bukkitOfflinePlayer != null ? bukkitOfflinePlayer.getPlayer() : Bukkit.getPlayerExact(name);
@@ -169,12 +168,12 @@ public class UnresolvedOfflinePlayer implements OfflinePlayer {
 	public Location getBedSpawnLocation() {
 		return bukkitOfflinePlayer.getBedSpawnLocation();
 	}
-	
+
 	@Override
 	public long getLastLogin() {
 		return bukkitOfflinePlayer.getLastLogin();
 	}
-	
+
 	@Override
 	public long getLastSeen() {
 		return bukkitOfflinePlayer.getLastSeen();

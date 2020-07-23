@@ -22,7 +22,7 @@ package ch.njol.util;
 import javax.annotation.Nullable;
 
 /**
- * @author Peter Güttinger
+ * @author Peter Gï¿½ttinger
  *
  */
 public abstract interface Predicate<T> {

@@ -42,7 +42,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.BoundingBox;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
-import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 
 import com.destroystokyo.paper.block.BlockSoundGroup;
@@ -53,7 +52,7 @@ import ch.njol.skript.bukkitutil.block.MagicBlockCompat;
 
 /**
  * A block that gets all data from a BlockState, and either reflects changes on the BlockState or delays them to the real block by 1 tick depending on which constructor is used.
- *
+ * 
  * @author Peter Güttinger
  */
 @SuppressWarnings("deprecation")
@@ -198,12 +197,12 @@ public class BlockStateBlock implements Block {
 	public BlockState getState() {
 		return state;
 	}
-	
+
 	@Override
 	public BlockState getState(boolean useSnapshot) {
 		return state;
 	}
-	
+
 	@Override
 	public Biome getBiome() {
 		return state.getBlock().getBiome();
@@ -349,7 +348,7 @@ public class BlockStateBlock implements Block {
 		}
 		return loc;
 	}
-	
+
 	// 1.13 additions
 	// Note that overridden methods may not exist on Minecraft<1.13
 	
@@ -370,7 +369,7 @@ public class BlockStateBlock implements Block {
 			state.setType(type);
 		}
 	}
-	
+
 	@Override
 	public BlockData getBlockData() {
 		if (!IS_RUNNING_1_13) {
@@ -379,7 +378,7 @@ public class BlockStateBlock implements Block {
 		
 		return state.getBlockData();
 	}
-	
+
 	@Override
 	public void setBlockData(BlockData data) {
 		if (!IS_RUNNING_1_13) {
@@ -397,7 +396,7 @@ public class BlockStateBlock implements Block {
 			state.setBlockData(data);
 		}
 	}
-	
+
 	@Override
 	public void setBlockData(BlockData data, boolean applyPhysics) {
 		if (!IS_RUNNING_1_13) {
@@ -426,12 +425,12 @@ public class BlockStateBlock implements Block {
 	public boolean isPassable() {
 		return isPassable;
 	}
-	
+
 	@Override
 	public BoundingBox getBoundingBox() {
 		return state.getBlock().getBoundingBox();
 	}
-	
+
 	@Override
 	public BlockSoundGroup getSoundGroup() {
 		return state.getBlock().getSoundGroup();

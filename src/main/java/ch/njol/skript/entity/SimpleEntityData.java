@@ -56,7 +56,6 @@ import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Fish;
 import org.bukkit.entity.FishHook;
-import org.bukkit.entity.Fox;
 import org.bukkit.entity.Ghast;
 import org.bukkit.entity.Giant;
 import org.bukkit.entity.Golem;
@@ -237,12 +236,12 @@ public class SimpleEntityData extends EntityData<Entity> {
 			types.add(new SimpleEntityDataInfo("stray", Stray.class));
 			types.add(new SimpleEntityDataInfo("husk", Husk.class));
 			types.add(new SimpleEntityDataInfo("skeleton", Skeleton.class, true));
-			
+
 			// Guardians
 			types.add(new SimpleEntityDataInfo("elder guardian", ElderGuardian.class));
 			types.add(new SimpleEntityDataInfo("normal guardian", Guardian.class));
 			types.add(new SimpleEntityDataInfo("guardian", Guardian.class, true));
-			
+
 			// Horses
 			types.add(new SimpleEntityDataInfo("donkey", Donkey.class));
 			types.add(new SimpleEntityDataInfo("mule", Mule.class));
@@ -250,13 +249,13 @@ public class SimpleEntityData extends EntityData<Entity> {
 			types.add(new SimpleEntityDataInfo("undead horse", ZombieHorse.class));
 			types.add(new SimpleEntityDataInfo("skeleton horse", SkeletonHorse.class));
 			types.add(new SimpleEntityDataInfo("horse", Horse.class));
-			
+
 			// New 1.11 horse supertypes
 			types.add(new SimpleEntityDataInfo("chested horse", ChestedHorse.class, true));
 			types.add(new SimpleEntityDataInfo("any horse", AbstractHorse.class, true));
-			
+
 			types.add(new SimpleEntityDataInfo("llama spit", LlamaSpit.class));
-			
+
 			// 1.11 hostile mobs
 			types.add(new SimpleEntityDataInfo("evoker", Evoker.class));
 			types.add(new SimpleEntityDataInfo("evoker fangs", EvokerFangs.class));
@@ -433,7 +432,7 @@ public class SimpleEntityData extends EntityData<Entity> {
 		throw new StreamCorruptedException("Invalid SimpleEntityDataInfo code name " + codeName);
 	}
 	
-	//		return info.c.getName();
+//		return info.c.getName();
 	@Override
 	@Deprecated
 	protected boolean deserialize(final String s) {

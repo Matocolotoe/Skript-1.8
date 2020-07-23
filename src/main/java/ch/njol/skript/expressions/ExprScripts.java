@@ -43,26 +43,26 @@ import org.eclipse.jdt.annotation.Nullable;
 @Name("All Scripts")
 @Description("Returns all of the scripts, or just the enabled or disabled ones.")
 @Examples({"command /scripts:",
-	"\ttrigger:",
-	"\t\tsend \"All Scripts: %scripts%\" to player",
-	"\t\tsend \"Loaded Scripts: %enabled scripts%\" to player",
-	"\t\tsend \"Unloaded Scripts: %disabled scripts%\" to player"})
+		"\ttrigger:",
+		"\t\tsend \"All Scripts: %scripts%\" to player",
+		"\t\tsend \"Loaded Scripts: %enabled scripts%\" to player",
+		"\t\tsend \"Unloaded Scripts: %disabled scripts%\" to player"})
 @Since("2.5")
 public class ExprScripts extends SimpleExpression<String> {
-	
+
 	static {
 		Skript.registerExpression(ExprScripts.class, String.class, ExpressionType.SIMPLE,
-			"[all [of the]] scripts [(1¦without ([subdirectory] paths|parents))]",
-			"[all [of the]] (enabled|loaded) scripts [(1¦without ([subdirectory] paths|parents))]",
-			"[all [of the]] (disabled|unloaded) scripts [(1¦without ([subdirectory] paths|parents))]");
+				"[all [of the]] scripts [(1¦without ([subdirectory] paths|parents))]",
+				"[all [of the]] (enabled|loaded) scripts [(1¦without ([subdirectory] paths|parents))]",
+				"[all [of the]] (disabled|unloaded) scripts [(1¦without ([subdirectory] paths|parents))]");
 	}
-	
+
 	private static final String SCRIPTS_PATH = new File(Skript.getInstance().getDataFolder(), Skript.SCRIPTSFOLDER).getPath() + File.separator;
-	
+
 	private boolean includeEnabled;
 	private boolean includeDisabled;
 	private boolean noPaths;
-	
+
 	@Override
 	public boolean init(final Expression<?>[] exprs, final int matchedPattern, final Kleenean isDelayed, final ParseResult parseResult) {
 		includeEnabled = matchedPattern <= 1;
@@ -70,7 +70,7 @@ public class ExprScripts extends SimpleExpression<String> {
 		noPaths = parseResult.mark == 1;
 		return true;
 	}
-	
+
 	@Override
 	protected String[] get(Event event) {
 		List<File> scripts = new ArrayList<>();
@@ -80,27 +80,27 @@ public class ExprScripts extends SimpleExpression<String> {
 			scripts.addAll(ScriptLoader.getDisabledFiles());
 		return formatFiles(scripts);
 	}
-	
+
 	@SuppressWarnings("null")
 	private String[] formatFiles(List<File> files) {
 		return files.stream()
 			.map(f -> noPaths ? f.getName() : f.getPath().replaceFirst(SCRIPTS_PATH, ""))
 			.toArray(String[]::new);
 	}
-	
+
 	@Override
 	public boolean isSingle() {
 		return false;
 	}
-	
+
 	@Override
 	public Class<? extends String> getReturnType() {
 		return String.class;
 	}
-	
+
 	@Override
 	public String toString(final @Nullable Event e, final boolean debug) {
 		return "scripts";
 	}
-	
+
 }
