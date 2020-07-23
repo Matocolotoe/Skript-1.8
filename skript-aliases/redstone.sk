@@ -83,13 +83,13 @@ redstone before flattening:
 		right-hinged powered [closed] top = - {Damage:11}
 
 	# Door items
-	oak [wood] door¦s = minecraft:wooden_door
-	iron door¦s = minecraft:iron_door
-	spruce [wood] door¦s = minecraft:spruce_door
-	birch [wood] door¦s = minecraft:birch_door
-	jungle [wood] door¦s = minecraft:jungle_door
-	acacia [wood] door¦s = minecraft:acacia_door
-	dark oak [wood] door¦s = minecraft:dark_oak_door
+	{door state} oak [wood] door¦s = minecraft:wooden_door
+	{door state} iron door¦s = minecraft:iron_door
+	{door state} spruce [wood] door¦s = minecraft:spruce_door
+	{door state} birch [wood] door¦s = minecraft:birch_door
+	{door state} jungle [wood] door¦s = minecraft:jungle_door
+	{door state} acacia [wood] door¦s = minecraft:acacia_door
+	{door state} dark oak [wood] door¦s = minecraft:dark_oak_door
 
 	[any] wood[en] door¦s = oak door, spruce door, birch door, jungle door, acacia door, dark oak door
 	[any] door¦s = iron door, any wood door
