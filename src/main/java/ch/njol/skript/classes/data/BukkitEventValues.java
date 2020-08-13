@@ -45,6 +45,7 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockFadeEvent;
+import org.bukkit.event.block.BlockFertilizeEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
@@ -118,6 +119,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
 import org.eclipse.jdt.annotation.Nullable;
 
+import com.destroystokyo.paper.event.entity.ProjectileCollideEvent;
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 
 import ch.njol.skript.Skript;
@@ -399,8 +401,7 @@ public final class BukkitEventValues {
 			@Override
 			@Nullable
 			public World get(final EntityEvent e) {
-				Entity entity = e.getEntity();
-				return entity == null ? null : entity.getWorld(); // no idea why it could be null, but it can happen
+				return e.getEntity().getWorld();
 			}
 		}, 0);
 		// EntityDamageEvent
@@ -440,6 +441,15 @@ public final class BukkitEventValues {
 			}
 		}, 0);
 		// ProjectileHitEvent
+		// ProjectileHitEvent#getHitBlock was added in 1.11
+		if(Skript.methodExists(ProjectileHitEvent.class, "getHitBlock"))
+			EventValues.registerEventValue(ProjectileHitEvent.class, Block.class, new Getter<Block, ProjectileHitEvent>() {
+				@Nullable
+				@Override
+				public Block get(ProjectileHitEvent e) {
+					return e.getHitBlock();
+				}
+			}, 0);
 		EventValues.registerEventValue(ProjectileHitEvent.class, Entity.class, new Getter<Entity, ProjectileHitEvent>() {
 			@Override
 			@Nullable
@@ -464,6 +474,23 @@ public final class BukkitEventValues {
 				return e.getEntity();
 			}
 		}, 0, "Use 'projectile' and/or 'shooter' in shoot events", ProjectileLaunchEvent.class);
+		//ProjectileCollideEvent
+		if (Skript.classExists("com.destroystokyo.paper.event.entity.ProjectileCollideEvent")) {
+			EventValues.registerEventValue(ProjectileCollideEvent.class, Projectile.class, new Getter<Projectile, ProjectileCollideEvent>() {
+				@Nullable
+				@Override
+				public Projectile get(ProjectileCollideEvent evt) {
+					return evt.getEntity();
+				}
+			}, 0);
+			EventValues.registerEventValue(ProjectileCollideEvent.class, Entity.class, new Getter<Entity, ProjectileCollideEvent>() {
+				@Nullable
+				@Override
+				public Entity get(ProjectileCollideEvent evt) {
+					return evt.getCollidedWith();
+				}
+			}, 0);
+		}
 		EventValues.registerEventValue(ProjectileLaunchEvent.class, Projectile.class, new Getter<Projectile, ProjectileLaunchEvent>() {
 			@Override
 			@Nullable
@@ -673,9 +700,7 @@ public final class BukkitEventValues {
 			@Override
 			@Nullable
 			public Direction get(final PlayerInteractEvent e) {
-				if (e.getBlockFace() != null)
-					return new Direction(new double[] {e.getBlockFace().getModX(), e.getBlockFace().getModY(), e.getBlockFace().getModZ()});
-				return Direction.ZERO; // Same as 'BlockFace.SELF' or literal 'at'
+				return new Direction(new double[] {e.getBlockFace().getModX(), e.getBlockFace().getModY(), e.getBlockFace().getModZ()});
 			}
 		}, 0);
 		// PlayerShearEntityEvent
@@ -888,6 +913,16 @@ public final class BukkitEventValues {
 				return e.getClickedInventory();
 			}
 		}, 0);
+		//BlockFertilizeEvent
+		if(Skript.classExists("org.bukkit.event.block.BlockFertilizeEvent")) {
+			EventValues.registerEventValue(BlockFertilizeEvent.class, Player.class, new Getter<Player, BlockFertilizeEvent>() {
+				@Nullable
+				@Override
+				public Player get(BlockFertilizeEvent event) {
+					return event.getPlayer();
+				}
+			}, 0);
+		}
 		// CraftItemEvent REMIND maybe re-add this when Skript parser is reworked?
 //		EventValues.registerEventValue(CraftItemEvent.class, ItemStack.class, new Getter<ItemStack, CraftItemEvent>() {
 //			@Override
@@ -1033,7 +1068,7 @@ public final class BukkitEventValues {
 				@Nullable
 				public FireworkEffect get(FireworkExplodeEvent e) {
 					List<FireworkEffect> effects = e.getEntity().getFireworkMeta().getEffects();
-					if (effects == null || effects.size() == 0)
+					if (effects.size() == 0)
 						return null;
 					return effects.get(0);
 				}

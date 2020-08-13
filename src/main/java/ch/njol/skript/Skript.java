@@ -227,6 +227,11 @@ public final class Skript extends JavaPlugin implements Listener {
 		}
 	}
 	
+	public static boolean using64BitJava() {
+		// Property returned should either be "Java HotSpot(TM) 64-Bit Server VM" or "OpenJDK 64-Bit Server VM"
+		return System.getProperty("java.vm.name").contains("64");
+	}
+	
 	/**
 	 * Checks if server software and Minecraft version are supported.
 	 * Prints errors or warnings to console if something is wrong.
@@ -269,6 +274,13 @@ public final class Skript extends JavaPlugin implements Listener {
 			Skript.warning("It will still probably work, but if it does not, you are on your own.");
 			Skript.warning("Skript officially supports Paper and Spigot.");
 		}
+		
+		// Throw a warning if the user is using 32-bit Java, since that is known to potentially cause StackOverflowErrors
+		if (!using64BitJava()) {
+			Skript.warning("You are currently using 32-bit Java. This may result in a StackOverflowError when loading aliases.");
+			Skript.warning("Please update to 64-bit Java to remove this warning.");
+		}
+		
 		// If nothing got triggered, everything is probably ok
 		return true;
 	}
@@ -384,7 +396,20 @@ public final class Skript extends JavaPlugin implements Listener {
 		}
 		
 		BukkitUnsafe.initialize(); // Needed for aliases
-		Aliases.load(); // Loaded before anything that might use them
+		
+		try {
+			Aliases.load(); // Loaded before anything that might use them
+		} catch (StackOverflowError e) {
+			if (using64BitJava()) {
+				throw e; // Uh oh, this shouldn't happen. Re-throw the error.
+			} else {
+				Skript.error("");
+				Skript.error("There was a StackOverflowError that occured while loading aliases.");
+				Skript.error("As you are currently using 32-bit Java, please update to 64-bit Java to resolve the error.");
+				Skript.error("Please report this issue to our GitHub only if updating to 64-bit Java does not fix the issue.");
+				Skript.error("");
+			}
+		}
 		
 		// If loading can continue (platform ok), check for potentially thrown error
 		if (classLoadError != null) {
@@ -730,7 +755,7 @@ public final class Skript extends JavaPlugin implements Listener {
 						public void run() {
 							Player p = e.getPlayer();
 							SkriptUpdater updater = getUpdater();
-							if (p == null || updater == null)
+							if (updater == null)
 								return;
 							
 							// Don't actually check for updates to avoid breaking Github rate limit
@@ -1355,13 +1380,13 @@ public final class Skript extends JavaPlugin implements Listener {
 			if (sender instanceof Player) {
 				final PlayerCommandPreprocessEvent e = new PlayerCommandPreprocessEvent((Player) sender, "/" + command);
 				Bukkit.getPluginManager().callEvent(e);
-				if (e.isCancelled() || e.getMessage() == null || !e.getMessage().startsWith("/"))
+				if (e.isCancelled() || !e.getMessage().startsWith("/"))
 					return false;
 				return Bukkit.dispatchCommand(e.getPlayer(), e.getMessage().substring(1));
 			} else {
 				final ServerCommandEvent e = new ServerCommandEvent(sender, command);
 				Bukkit.getPluginManager().callEvent(e);
-				if (e.getCommand() == null || e.getCommand().isEmpty())
+				if (e.getCommand().isEmpty())
 					return false;
 				return Bukkit.dispatchCommand(e.getSender(), e.getCommand());
 			}
@@ -1520,10 +1545,6 @@ public final class Skript extends JavaPlugin implements Listener {
 		logEx("[Skript] Severe Error:");
 		logEx(info);
 		logEx();
-		if (!tainted) {
-			logEx("Something went horribly wrong with Skript.");
-			logEx("This issue is NOT your fault! You probably can't fix it yourself, either.");
-		}
 		
 		// Parse something useful out of the stack trace
 		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
@@ -1545,6 +1566,8 @@ public final class Skript extends JavaPlugin implements Listener {
 			logEx("You are running Minecraft 1.9+, not supported by this fork of Skript.");
 			logEx("This plugin supports Minecraft 1.8 only.");
 		} else {
+			logEx("Something went horribly wrong with Skript.");
+			logEx("This issue is NOT your fault! You probably can't fix it yourself, either.");
 			if (pluginPackages.isEmpty()) {
 				logEx("You should report it at " + issuesUrl + ". Please copy paste this report there (or use paste service).");
 				logEx("This ensures that your issue is noticed and will be fixed as soon as possible.");
