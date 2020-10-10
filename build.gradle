@@ -18,44 +18,44 @@ allprojects {
 	repositories {
 		jcenter()
 		mavenCentral()
-	
+
 		maven {
 			url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
 		}
-	
+
 		maven {
 			url 'http://maven.sk89q.com/repo'
 		}
-	
+
 		maven {
 			url 'https://repo.destroystokyo.com/repository/maven-public//'
 		}
-	
+
 		maven {
 			url 'http://ci.emc.gs/nexus/content/groups/aikar/'
 		}
-	
+
 		maven {
 			url 'https://jitpack.io'
 		}
-	
+
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/snapshots/'
 		}
-	
+
 		maven {
 			url 'https://repo.codemc.org/repository/maven-public'
 		}
 	}
-	
+
 	configurations {
 		ecj
 	}
-	
+
 	dependencies {
 		ecj 'org.eclipse.jdt:ecj:3.15.0'
 	}
-	
+
 	sourceCompatibility = 1.8
 	compileJava {
 		options.fork = true
@@ -115,6 +115,9 @@ jar {
 	from('skript-aliases') {
 		into('aliases-english') // Change this if we get aliases in other languages
 	}
+
+	// Include WorldGuard module of Skript
+	from 'skript-worldguard6/build/classes/java/main'
 }
 
 license {
@@ -197,19 +200,18 @@ task githubRelease(type: Jar) {
 	from sourceSets.main.output
 	dependsOn githubResources
 	archiveName = 'Skript-github.jar'
-	
+
 	manifest {
 		attributes("Name": "ch/njol/skript",
 				"Sealed": "true")
 	}
-	
+
 	from('skript-aliases') {
 		into('aliases-english')
 	}
-	
-	// Include all modules of Skript
+
+	// Include WorldGuard module of Skript
 	from 'skript-worldguard6/build/classes/java/main'
-	from 'skript-worldguard7fawe/build/classes/java/main'
 }
 
 task spigotResources(type: ProcessResources) {
@@ -239,17 +241,16 @@ task spigotRelease(type: Jar) {
 	from sourceSets.main.output
 	dependsOn spigotResources
 	archiveName = 'Skript-spigot.jar'
-	
+
 	manifest {
 		attributes("Name": "ch/njol/skript",
 				"Sealed": "true")
 	}
-	
+
 	from('skript-aliases') {
 		into('aliases-english')
 	}
-	
-	// Include all modules of Skript
+
+	// Include WorldGuard module of Skript
 	from 'skript-worldguard6/build/classes/java/main'
-	from 'skript-worldguard7fawe/build/classes/java/main'
 }
