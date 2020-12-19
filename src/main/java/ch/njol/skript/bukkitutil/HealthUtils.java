@@ -23,6 +23,7 @@ import org.bukkit.entity.Damageable;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import ch.njol.skript.Skript;
 import ch.njol.util.Math2;
 
 /**
