@@ -14,8 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with Skript.  If not, see <http://www.gnu.org/licenses/>.
  *
- *
- * Copyright 2011-2017 Peter Güttinger and contributors
+ * Copyright Peter Güttinger, SkriptLang team and contributors
  */
 package ch.njol.skript.bukkitutil;
 
@@ -43,7 +42,7 @@ import ch.njol.util.Closeable;
  * Should only be used in {@link Commands} and the parser for offline players.
  * <p>
  * Will produce {@link NullPointerException}s if used incorrectly.
- *
+ * 
  * @author Peter Güttinger
  */
 @SuppressWarnings("null")
@@ -56,7 +55,7 @@ public class UnresolvedOfflinePlayer implements OfflinePlayer {
 		resolverThread = Skript.newThread(new Runnable() {
 			@SuppressWarnings({"deprecation", "unused"})
 			@Override
-			public void run() {
+			public void run() {				
 				while (true) {
 					if (toResolve == null) {
 						toResolve = new LinkedBlockingQueue<>();

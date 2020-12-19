@@ -10,7 +10,7 @@ apply plugin: 'maven-publish'
 // Substitute dependencies' versions of Bukkit with latest Paper API
 configurations.all {
 	resolutionStrategy.dependencySubstitution {
-		substitute module('org.bukkit:bukkit') with module('com.destroystokyo.paper:paper-api:1.14-R0.1-SNAPSHOT')
+		substitute module('org.bukkit:bukkit') with module('com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT')
 	}
 }
 
@@ -50,6 +50,8 @@ allprojects {
 
 	configurations {
 		ecj
+		shade
+		implementation.extendsFrom(shade)
 	}
 
 	dependencies {
@@ -70,7 +72,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.destroystokyo.paper:paper-api:1.16.2-R0.1-SNAPSHOT'
+	implementation 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
 	implementation 'org.eclipse.jdt:org.eclipse.jdt.annotation:1.1.0'
 	implementation 'com.google.code.findbugs:findbugs:3.0.1'
 	implementation 'com.sk89q.worldguard:worldguard-legacy:7.0.0-SNAPSHOT'
@@ -78,6 +80,7 @@ dependencies {
 	implementation('net.milkbowl.vault:Vault:1.7.1') {
 		exclude group: 'org.bstats', module: 'bstats-bukkit'
 	}
+	shade 'io.papermc:paperlib:1.0.5'
 
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'org.easymock:easymock:3.6'

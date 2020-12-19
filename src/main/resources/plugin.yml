@@ -14,14 +14,13 @@
 #  You should have received a copy of the GNU General Public License
 #  along with Skript.  If not, see <http://www.gnu.org/licenses/>.
 #
-#
-# Copyright 2011-2017 Peter Güttinger and contributors
+# Copyright Peter Güttinger, SkriptLang team and contributors
 #
 
 
 name: Skript
 
-description: Customize Minecraft's mechanics with simple scripts written in plain English sentences (Gio's 1.8 fork).
+description: Customize Minecraft's mechanics with simple scripts written in plain English sentences.
 
 authors:
     - Njol
@@ -42,7 +41,6 @@ authors:
     - Wealthyturtle
     - OfficialDonut
     - eyesniper2
-    - Giovanni75
 
 website: https://skriptlang.github.io/Skript
 
