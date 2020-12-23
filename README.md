@@ -13,7 +13,7 @@ which was built on Njol's original Skript.
 
 ## Requirements
 Skript requires **Spigot** to work. You heard it right, Bukkit does *not* work.
-You can use Paper is but I don't really recommend it for 1.8.
+You can use Paper but I don't really recommend it for 1.8.
 
 This fork of Skript is only available for Minecraft 1.8. Check above if you're
 looking for 1.9+ compatibility.
@@ -32,7 +32,7 @@ Documentation is available [here](https://skriptlang.github.io/Skript) for the l
 Since this fork only provides retro-compatibility, issues regarding Skript will have to be posted
 on the [official repository](https://github.com/SkriptLang/Skript) of the plugin.
 
-However, feel free to report any problem directly which you believe related to
+However, don't hesitate to report any problem which you believe directly related to
 the plugin by opening an issue [here](https://github.com/Matocolotoe/Skript-1.8/issues).
 
-If you need any further help, join our [Discord server](https://discord.gg/yh3Z98m).
+If you need any further help, feel free to join our [Discord server](https://discord.gg/yh3Z98m).

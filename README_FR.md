@@ -34,4 +34,4 @@ de Skript devront être postées sur le [repository officiel](https://github.com
 Toutefois, n'hésitez pas à nous signaler tout problème qui vous semble être directement lié
 au plugin en ouvrant une issue [ici](https://github.com/Matocolotoe/Skript-1.8/issues).
 
-Si vous avez besoin d'une aide complémentaire, rejoignez notre [serveur Discord](https://discord.gg/yh3Z98m).
+Si vous avez besoin d'une aide complémentaire, vous pouvez rejoindre notre [serveur Discord](https://discord.gg/yh3Z98m).
