@@ -4,6 +4,7 @@ If you're upgrading from Skript 2.2 or an older version to this plugin, you need
 ## Changing from Minecraft 1.9+
 In the case of changing versions from Minecraft 1.9+, a big error might appear.
 If so, backup your `scripts` folder, delete it and start your server, then restore its contents.
+This will allow the `materials.json` file to generate correctly.
 
 ## What to change ?
 
@@ -38,5 +39,5 @@ Most valued items now have aliases. However, if yours doesn't have one, use the 
 
 ### Loading time
 
-The problem of scripts taking a long time to load is a known issue which was introduced in Skript v2.3.
-It happens especially if you are using items with long and explicit (i.e. without list variables) lores.
+The problem of scripts taking a long time to load is a known issue which has been happening since Skript's 2.3 update.
+It usually happens if you are using items with long and explicit (i.e. without list variables) lores.

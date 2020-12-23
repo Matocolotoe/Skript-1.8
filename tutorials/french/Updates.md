@@ -4,6 +4,7 @@ Si vous passez de la version 2.2 de Skript ou d'une version antérieure à ce pl
 ## Changement à partir de Minecraft 1.9+
 Dans le cas d'un changement de version à partir de Minecraft 1.9+, une erreur conséquente peut apparaître.
 Si c'est le cas, sauvegardez votre dossier `scripts`, supprimez-le et démarrez votre serveur, puis restaurez son contenu.
+Cela permettra au fichier `materials.json` de correctement se générer.
 
 ## Que faut-il changer ?
 
@@ -38,5 +39,5 @@ La plupart des items à data values ont maintenant des alias. Cependant, si le v
 
 ### Temps de chargement
 
-Le problème des scripts qui prennent beaucoup de temps à se charger est connu et a été introduit par Skript v2.3.
-Il arrive surtout si vous utilisez des items avec des lores longues et explicites (c'est-à-dire sans variables "listes").
+Le problème des scripts qui prennent beaucoup de temps à se charger est connu et survient depuis la mise à jour 2.3 de Skript.
+Il arrive généralement si vous utilisez des items avec des lores longues et explicites (c'est-à-dire sans variables "listes").

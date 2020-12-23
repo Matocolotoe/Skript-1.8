@@ -12,12 +12,10 @@ originale de Njol.
 
 ## Pré-requis
 Skript a besoin de **Spigot** pour fonctionner. Vous l'avez bien compris, Bukkit ne
-fonctionne *pas*. Paper est utilisable mais peu recommandé pour la 1.8 ou moins.
+fonctionne *pas*. Paper est utilisable mais je ne le recommande pas vraiment pour la 1.8.
 
 Cette fork de Skript est uniquement disponible pour Minecraft 1.8. Rendez-vous
 plus haut si vous recherchez une compatibilité 1.9+.
-
-De plus, les hooks à FAWE ou WorldGuard ne sont pas disponibles pour le moment.
 
 ## Téléchargements
 Vous pouvez trouver les téléchargements dans la [page des releases](https://github.com/Matocolotoe/Skript-1.8/releases).
@@ -33,7 +31,7 @@ La documentation est disponible [ici](https://skriptlang.github.io/Skript) pour 
 Puisque cette fork ne fournit que de la rétro-compatibilité, les bugs et suggestions à propos
 de Skript devront être postées sur le [repository officiel](https://github.com/SkriptLang/Skript) du plugin.
 
-Toutefois, n'hésitez pas à nous signaler tout problème directement lié au plugin
-en postant une issue [ici](https://github.com/Matocolotoe/Skript-1.8/issues).
+Toutefois, n'hésitez pas à nous signaler tout problème qui vous semble être directement lié
+au plugin en ouvrant une issue [ici](https://github.com/Matocolotoe/Skript-1.8/issues).
 
 Si vous avez besoin d'une aide complémentaire, rejoignez notre [serveur Discord](https://discord.gg/yh3Z98m).
