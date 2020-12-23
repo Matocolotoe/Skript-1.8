@@ -20,7 +20,7 @@
 
 name: Skript
 
-description: Customize Minecraft's mechanics with simple scripts written in plain English sentences.
+description: Customize Minecraft's mechanics with simple scripts written in plain English sentences (Gio's 1.8 fork).
 
 authors:
     - Njol
@@ -41,6 +41,7 @@ authors:
     - Wealthyturtle
     - OfficialDonut
     - eyesniper2
+    - Giovanni75
 
 website: https://skriptlang.github.io/Skript
 
