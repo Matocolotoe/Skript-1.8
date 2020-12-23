@@ -50,8 +50,6 @@ allprojects {
 
 	configurations {
 		ecj
-		shade
-		implementation.extendsFrom(shade)
 	}
 
 	dependencies {
@@ -80,7 +78,6 @@ dependencies {
 	implementation('net.milkbowl.vault:Vault:1.7.1') {
 		exclude group: 'org.bstats', module: 'bstats-bukkit'
 	}
-	shade 'io.papermc:paperlib:1.0.5'
 
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'org.easymock:easymock:3.6'
