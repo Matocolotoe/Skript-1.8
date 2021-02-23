@@ -62,7 +62,7 @@ public class ExprUnbreakable extends PropertyExpression<ItemType, ItemType> {
 			ItemMeta meta = clone.getItemMeta();
 			
 			try {
-				final Method spigot = meta.getClass().getDeclaredMethod("spigot");
+				final Method spigot = ItemMeta.class.getDeclaredMethod("spigot");
 				spigot.setAccessible(true);
 				
 				final Object instance = spigot.invoke(meta);
