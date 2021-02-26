@@ -10,6 +10,8 @@ jobs:
       uses: actions/setup-java@v1.4.3
       with:
         java-version: 1.8
+    - name: Grant permissions
+      run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew clean build
     - name: Upload artifact
