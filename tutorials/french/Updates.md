@@ -20,7 +20,7 @@ Si vous avez beaucoup de fichiers à mettre à jour, il suffit d'utiliser CTRL+F
 
 ### Nouveau système d'alias
 
-Les nouveaux alias sont disponibles dans le repository[skript-aliases](https://github.com/SkriptLang/skript-aliases).
+Les nouveaux alias sont disponibles dans le repository [skript-aliases](https://github.com/SkriptLang/skript-aliases).
 
 Ce fork fournit des alias pour toutes les potions de la 1.8 (qui ont changé en 1.9+), plus de détails
 [ici](https://github.com/Matocolotoe/Skript-1.8/tree/master/skript-aliases/brewing.sk).
