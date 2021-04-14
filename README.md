@@ -3,20 +3,15 @@ Pour visionner la version française du tutoriel, cliquez [ici](https://github.c
 
 Looking for the official repository and 1.9+ releases ? Click [here](https://github.com/SkriptLang/Skript/releases).
 
-Skript is a plugin for Paper/Spigot, which allows server owners and other people
-to modify their servers without learning Java. It can also be useful if you
-*do* know Java; some tasks are quicker to do with Skript, and so it can be used
-for prototyping etc.
+Skript is a plugin for Paper/Spigot, which allows server owners and other people to modify their servers without learning Java. It can also be useful if you
+*do* know Java; some tasks are quicker to do with Skript, and so it can be used for prototyping etc.
 
-This GitHub fork of Skript is based on the SkriptLang fork, based on Mirreski's improvements
-which was built on Njol's original Skript.
+This GitHub fork of Skript is based on the SkriptLang fork, based on Mirreski's improvements, which were built on Njol's original Skript.
 
 ## Requirements
-Skript requires **Spigot** to work. You heard it right, Bukkit does *not* work.
-You can use Paper but I don't really recommend it for 1.8.
+Skript-1.8 requires **Spigot 1.8.8** (not Spigot 1.8.0, 1.8.3, ...) to work. You heard it right, Bukkit does *not* work.
 
-This fork of Skript is only available for Minecraft 1.8. Check above if you're
-looking for 1.9+ compatibility.
+This fork is only available for Minecraft 1.8. Check above if you're looking for 1.9+ compatibility.
 
 ## Download
 You can find the downloads in the [releases page](https://github.com/Matocolotoe/Skript-1.8/releases).
