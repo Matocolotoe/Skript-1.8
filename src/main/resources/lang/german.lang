@@ -144,9 +144,9 @@ updater:
 	checking: Es wird geprüft, ob eine neue Version verfügbar ist...
 	check in progress: Es wird gerade geprüft, ob eine neue Version verfügbar ist.
 	check error: <red>Beim Prüfen auf eine neue Version ist ein Fehler aufgetreten:<light red> %s
-	running latest version: Auf diesem Server läuft die neueste Version von Skript.
-	running latest version (beta): Auf diesem Server läuft eine <i>Beta<r>-Version von Skript, und es is keine neue <i>stabile<r> Version verfügbar. Auf neuere Beta-Versionen muss manuell aktualisiert werden!
-	update available: Eine neue Version von Skript ist verfügbar: <gold>%s<reset> (Auf diesem Server läuft Version <gold>%s<reset>)
+	running latest version: Auf diesem Server läuft die neueste Version von Skript-1.8.
+	running latest version (beta): Auf diesem Server läuft eine <i>Beta<r>-Version von Skript-1.8, und es is keine neue <i>stabile<r> Version verfügbar. Auf neuere Beta-Versionen muss manuell aktualisiert werden!
+	update available: Eine neue Version von Skript-1.8 ist verfügbar: <gold>%s<reset> (Auf diesem Server läuft Version <gold>%s<reset>)
 	downloading: Lade Skript <gold>%s<reset> herunter...
 	download in progress: Die neueste Version wird gerade heruntergeladen.
 	download error: <red>Beim Herunterladen der neuesten Version ist ein Fehler aufgetreten:<light red> %s

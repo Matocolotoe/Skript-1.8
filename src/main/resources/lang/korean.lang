@@ -158,8 +158,8 @@ updater:
 	check in progress: 현재 새 버전 확인이 진행 중입니다.
 	updater disabled: 업데이터가 비활성화되어 있으므로 Skript의 최신 버전을 확인하지 않았습니다.
 	check error: <red>Skript의 최신 버전을 확인하는 동안 오류가 발생했습니다: <light red>%s
-	running latest version: 현재 안정적인 최신 Skript 버전을 실행하고 있습니다.
-	running latest version (beta): 현재 <i>베타<r>버전의 Skript을 실행하고 있으며 새로운 <i>stable<r>버전을 사용할 수 없습니다. 최신 베타 버전으로 수동 업데이트해야합니다.
+	running latest version: 현재 안정적인 최신 Skript-1.8 버전을 실행하고 있습니다.
+	running latest version (beta): 현재 <i>베타<r>버전의 Skript-1.8을 실행하고 있으며 새로운 <i>stable<r>버전을 사용할 수 없습니다. 최신 베타 버전으로 수동 업데이트해야합니다.
 	update available: Skript의 새로운 버전을 사용할 수 있습니다: <gold>%s<reset> (현재 <gold>%s<reset>을(를) 실행 중입니다)
 	downloading: Skript <gold>%s<reset> 다운로드 중...
 	download in progress: Skript의 최신 버전은 현재 다운로드 중입니다.
