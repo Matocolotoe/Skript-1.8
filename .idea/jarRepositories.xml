@@ -56,5 +56,15 @@
       <option name="name" value="maven7" />
       <option name="url" value="https://repo.codemc.org/repository/maven-public" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="https://papermc.io/repo/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://ci.emc.gs/nexus/content/groups/aikar/" />
+    </remote-repository>
   </component>
 </project>

@@ -47,6 +47,7 @@ public class EvtItem extends SkriptEvent {
 	
 	private final static boolean hasConsumeEvent = Skript.classExists("org.bukkit.event.player.PlayerItemConsumeEvent");
 	private final static boolean hasPrepareCraftEvent = Skript.classExists("org.bukkit.event.inventory.PrepareItemCraftEvent");
+	private final static boolean hasEntityPickupItemEvent = Skript.classExists("org.bukkit.event.entity.EntityPickupItemEvent");
 	
 	static {
 		Skript.registerEvent("Dispense", EvtItem.class, BlockDispenseEvent.class, "dispens(e|ing) [[of] %itemtypes%]")
@@ -74,10 +75,19 @@ public class EvtItem extends SkriptEvent {
 					.examples("on preparing craft of torch:")
 					.since("2.2-Fixes-V10");
 		}
-		Skript.registerEvent("Pick Up", EvtItem.class, PlayerPickupItemEvent.class, "[player] (pick[ ]up|picking up) [[of] %itemtypes%]")
-			.description("Called when a player picks up an item. Please note that the item is still on the ground when this event is called.")
-			.examples("on pick up:")
-			.since("<i>unknown</i> (before 2.1)");
+		if (hasEntityPickupItemEvent) {
+			Skript.registerEvent("Pick Up", EvtItem.class, CollectionUtils.array(PlayerPickupItemEvent.class, EntityPickupItemEvent.class),
+					"[(player|1¦entity)] (pick[ ]up|picking up) [[of] %itemtypes%]")
+				.description("Called when a player/entity picks up an item. Please note that the item is still on the ground when this event is called.")
+				.examples("on pick up:", "on entity pickup of wheat:")
+				.since("<i>unknown</i> (before 2.1), 2.5 (entity)")
+				.requiredPlugins("1.12.2+ for entity");
+		} else {
+			Skript.registerEvent("Pick Up", EvtItem.class, PlayerPickupItemEvent.class, "[player] (pick[ ]up|picking up) [[of] %itemtypes%]")
+				.description("Called when a player picks up an item. Please note that the item is still on the ground when this event is called.")
+				.examples("on pick up:")
+				.since("<i>unknown</i> (before 2.1)");
+		}
 		// TODO brew event
 //		Skript.registerEvent("Brew", EvtItem.class, BrewEvent.class, "brew[ing] [[of] %itemtypes%]")
 //				.description("Called when a potion finished brewing.")
@@ -103,7 +113,8 @@ public class EvtItem extends SkriptEvent {
 					 	"	cancel event")
 				.since("2.2-dev35");
 		Skript.registerEvent("Item Merge", EvtItem.class, ItemMergeEvent.class, "(item[ ][stack]|[item] %-itemtypes%) merg(e|ing)", "item[ ][stack] merg(e|ing) [[of] %-itemtypes%]")
-				.description("Called when dropped items merge into a single stack.")
+				.description("Called when dropped items merge into a single stack. event-entity will be the entity which is trying to merge, " +
+						"and future event-entity will be the entity which is being merged into.")
 				.examples("on item merge of gold blocks:",
 					 	"	cancel event")
 				.since("2.2-dev35");
@@ -126,6 +137,8 @@ public class EvtItem extends SkriptEvent {
 	public boolean check(final Event e) {
 		if (e instanceof ItemSpawnEvent) // To make 'last dropped item' possible.
 			EffSpawn.lastSpawned = ((ItemSpawnEvent) e).getEntity();
+		if (hasEntityPickupItemEvent && ((!entity && e instanceof EntityPickupItemEvent) || (entity && e instanceof PlayerPickupItemEvent)))
+			return false;
 		if (types == null)
 			return true;
 		final ItemStack is;
@@ -139,6 +152,8 @@ public class EvtItem extends SkriptEvent {
 			is = ((CraftItemEvent) e).getRecipe().getResult();
 		} else if (hasPrepareCraftEvent && e instanceof PrepareItemCraftEvent) {
 			is = ((PrepareItemCraftEvent) e).getRecipe().getResult();
+		} else if (e instanceof EntityPickupItemEvent) {
+			is = ((EntityPickupItemEvent) e).getItem().getItemStack();
 		} else if (e instanceof PlayerPickupItemEvent) {
 			is = ((PlayerPickupItemEvent) e).getItem().getItemStack();
 		} else if (hasConsumeEvent && e instanceof PlayerItemConsumeEvent) {
