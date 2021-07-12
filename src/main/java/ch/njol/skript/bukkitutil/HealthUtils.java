@@ -18,10 +18,8 @@
  */
 package ch.njol.skript.bukkitutil;
 
+import ch.njol.skript.Skript;
 import ch.njol.util.Math2;
-import org.bukkit.attribute.Attributable;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Damageable;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -54,9 +52,7 @@ public class HealthUtils {
 	 * @return How many hearts the entity can have at most
 	 */
 	public static double getMaxHealth(Damageable e) {
-		AttributeInstance attributeInstance = ((Attributable) e).getAttribute(Attribute.GENERIC_MAX_HEALTH);
-		assert attributeInstance != null;
-		return attributeInstance.getValue() / 2;
+		return e.getMaxHealth() / 2;
 	}
 	
 	/**
@@ -65,9 +61,7 @@ public class HealthUtils {
 	 * @param health How many hearts the entity can have at most
 	 */
 	public static void setMaxHealth(Damageable e, double health) {
-		AttributeInstance attributeInstance = ((Attributable) e).getAttribute(Attribute.GENERIC_MAX_HEALTH);
-		assert attributeInstance != null;
-		attributeInstance.setBaseValue(health * 2);
+		e.setMaxHealth(health * 2);
 	}
 	
 	/**
