@@ -40,12 +40,12 @@ public class EquipmentSlot extends SlotWithIndex {
 			@Override
 			@Nullable
 			public ItemStack get(final EntityEquipment e) {
-				return e.getItemInMainHand();
+				return e.getItemInHand();
 			}
 
 			@Override
 			public void set(final EntityEquipment e, final @Nullable ItemStack item) {
-				e.setItemInMainHand(item);
+				e.setItemInHand(item);
 			}
 		},
 		OFF_HAND(40) {

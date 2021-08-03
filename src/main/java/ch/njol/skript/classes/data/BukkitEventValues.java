@@ -698,9 +698,7 @@ public final class BukkitEventValues {
 				if (offHandSupport) {
 					EquipmentSlot hand = e.getHand();
 					if (hand == EquipmentSlot.HAND)
-						return new ItemType(e.getPlayer().getInventory().getItemInMainHand());
-					else if (hand == EquipmentSlot.OFF_HAND)
-						return new ItemType(e.getPlayer().getInventory().getItemInOffHand());
+						return new ItemType(e.getPlayer().getInventory().getItemInHand());
 					else
 						return null;
 				} else {
