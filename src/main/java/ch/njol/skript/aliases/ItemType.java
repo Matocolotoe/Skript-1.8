@@ -280,6 +280,10 @@ public class ItemType implements Unit, Iterable<ItemData>, Container<ItemStack>,
 	public boolean isOfType(@Nullable Block block) {
 		if (block == null)
 			return isOfType(Material.AIR, null);
+		if (block.getType() == Material.valueOf("BREWING_STAND"))
+			return this.getRandom().getType() == Material.valueOf("BREWING_STAND_ITEM");
+		if (block.getType() == Material.valueOf("NETHER_WARTS"))
+			return this.getRandom().getType() == Material.valueOf("NETHER_STALK");
 		return isOfType(block.getState());
 	}
 	
