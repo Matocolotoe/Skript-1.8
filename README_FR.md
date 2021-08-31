@@ -7,16 +7,15 @@ vous servir si vous *êtes* développeur Java, certaines tâches sont plus rapid
 Cette fork GitHub de Skript est basée sur celle de SkriptLang, elle-même basée sur les améliorations faites par Mirreski, elles-mêmes construites sur la version originale de Njol.
 
 ## Pré-requis
-Skript-1.8 a besoin de **Spigot 1.8.8** pour fonctionner (pas Spigot 1.8.0, 1.8.3, ...). Vous l'avez bien compris, Bukkit ne fonctionne *pas*.
+Skript-1.8 a besoin de **Spigot 1.8.8** pour fonctionner (pas Spigot 1.8.0, 1.8.3, ...) et vous l'avez bien compris, Bukkit ne fonctionne *pas*.
 
-Cette fork est uniquement disponible pour Minecraft 1.8. Rendez-vous plus haut si vous recherchez une version compatible avec Minecraft 1.9+.
+Cette fork est uniquement disponible pour Minecraft 1.8. Rendez-vous plus haut si vous recherchez une version compatible avec Minecraft 1.9+. Par ailleurs :
+
+- Certains addons requièrent une version spéciale compatible avec la 1.8, voir le [tutoriel pour les addons](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Addons.md).
+- Si vous étiez sous Skript 2.2, votre code doit être légèrement modifié, voir le [tutoriel pour les scripts](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Updates.md).
 
 ## Téléchargements
 Vous pouvez trouver les téléchargements dans la [page des releases](https://github.com/Matocolotoe/Skript-1.8/releases).
-
-## Tutoriels
-- [Addons](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Addons.md)
-- [Mettre à jour vos scripts](https://github.com/Matocolotoe/Skript-1.8/blob/master/tutorials/french/Updates.md) (pour Skript-1.8)
 
 ## Documentation
 La documentation est disponible [ici](https://skriptlang.github.io/Skript) pour la dernière version de Skript.
