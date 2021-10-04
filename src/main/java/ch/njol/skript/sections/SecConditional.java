@@ -126,8 +126,8 @@ public class SecConditional extends Section {
 		if (type == ConditionalType.ELSE) {
 			// In an else section, ...
 			if (hasDelayAfter.isTrue()
-				&& lastIf.hasDelayAfter.isTrue()
-				&& getElseIfs(triggerItems).stream().map(SecConditional::getHasDelayAfter).allMatch(Kleenean::isTrue)) {
+					&& lastIf.hasDelayAfter.isTrue()
+					&& getElseIfs(triggerItems).stream().map(SecConditional::getHasDelayAfter).allMatch(Kleenean::isTrue)) {
 				// ... if the if section, all else-if sections and the else section have definite delays,
 				//  mark delayed as TRUE.
 				getParser().setHasDelayBefore(Kleenean.TRUE);
@@ -164,8 +164,6 @@ public class SecConditional extends Section {
 			return getNormalNext();
 		} else if (type == ConditionalType.ELSE || parseIf || condition.check(e)) {
 			TriggerItem skippedNext = getSkippedNext();
-			setNext(skippedNext);
-
 			if (last != null)
 				last.setNext(skippedNext);
 			return first != null ? first : skippedNext;
