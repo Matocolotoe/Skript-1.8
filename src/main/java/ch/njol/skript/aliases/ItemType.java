@@ -280,10 +280,32 @@ public class ItemType implements Unit, Iterable<ItemData>, Container<ItemStack>,
 	public boolean isOfType(@Nullable Block block) {
 		if (block == null)
 			return isOfType(Material.AIR, null);
-		if (block.getType() == Material.valueOf("BREWING_STAND"))
-			return this.getRandom().getType() == Material.valueOf("BREWING_STAND_ITEM");
-		if (block.getType() == Material.valueOf("NETHER_WARTS"))
-			return this.getRandom().getType() == Material.valueOf("NETHER_STALK");
+		switch (block.getType().toString()) {
+			case "ACACIA_DOOR":
+				return this.getRandom().getType() == Material.valueOf("ACACIA_DOOR_ITEM");
+			case "BIRCH_DOOR":
+				return this.getRandom().getType() == Material.valueOf("BIRCH_DOOR_ITEM");
+			case "BREWING_STAND":
+				return this.getRandom().getType() == Material.valueOf("BREWING_STAND_ITEM");
+			case "CAULDRON":
+				return this.getRandom().getType() == Material.valueOf("CAULDRON_ITEM");
+			case "DARK_OAK_DOOR":
+				return this.getRandom().getType() == Material.valueOf("DARK_OAK_DOOR_ITEM");
+			case "IRON_DOOR_BLOCK":
+				return this.getRandom().getType() == Material.valueOf("IRON_DOOR");
+			case "JUNGLE_DOOR":
+				return this.getRandom().getType() == Material.valueOf("JUNGLE_DOOR_ITEM");
+			case "NETHER_WARTS":
+				return this.getRandom().getType() == Material.valueOf("NETHER_STALK");
+			case "SKULL":
+				return this.getRandom().getType() == Material.valueOf("SKULL_ITEM");
+			case "SPRUCE_DOOR":
+				return this.getRandom().getType() == Material.valueOf("SPRUCE_DOOR_ITEM");
+			case "SUGAR_CANE_BLOCK":
+				return this.getRandom().getType() == Material.valueOf("SUGAR_CANE");
+			case "WOODEN_DOOR":
+				return this.getRandom().getType() == Material.valueOf("WOOD_DOOR");
+		}
 		return isOfType(block.getState());
 	}
 	
