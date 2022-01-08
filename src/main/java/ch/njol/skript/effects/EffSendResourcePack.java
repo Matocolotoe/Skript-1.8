@@ -38,30 +38,19 @@ import ch.njol.util.StringUtils;
 		"the resource pack in the background, and will automatically switch to it once the download is complete. ",
 		"The URL must be a direct download link.",
 		"",
-		"The hash is used for caching, the player won't have to re-download the resource pack that way. ",
-		"The hash must be SHA-1, you can get SHA-1 hash of your resource pack using ",
-		"<a href=\"https://emn178.github.io/online-tools/sha1_checksum.html\">this online tool</a>.",
-		"",
 		"The <a href='events.html#resource_pack_request_action'>resource pack request action</a> can be used to check ",
 		"status of the sent resource pack request."})
 @Examples({"on join:",
-		"	send the resource pack from \"URL\" with hash \"hash\" to the player"})
+		"	send the resource pack from \"URL\" to the player"})
 @Since("2.4")
 public class EffSendResourcePack extends Effect {
 
 	static {
-		Skript.registerEffect(EffSendResourcePack.class,
-				"send [the] resource pack [from [[the] URL]] %string% to %players%",
-				"send [the] resource pack [from [[the] URL]] %string% with hash %string% to %players%");
+		Skript.registerEffect(EffSendResourcePack.class, "send [the] resource pack [from [[the] URL]] %string% to %players%");
 	}
-
-	private static final boolean PAPER_METHOD_EXISTS = Skript.methodExists(Player.class, "setResourcePack", String.class, String.class);
 
 	@SuppressWarnings("null")
 	private Expression<String> url;
-
-	@Nullable
-	private Expression<String> hash;
 
 	@SuppressWarnings("null")
 	private Expression<Player> recipients;
@@ -70,12 +59,7 @@ public class EffSendResourcePack extends Effect {
 	@Override
 	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
 		url = (Expression<String>) exprs[0];
-		if (matchedPattern == 0) {
-			recipients = (Expression<Player>) exprs[1];
-		} else {
-			hash = (Expression<String>) exprs[1];
-			recipients = (Expression<Player>) exprs[2];
-		}
+		recipients = (Expression<Player>) exprs[1];
 		return true;
 	}
 
@@ -84,32 +68,20 @@ public class EffSendResourcePack extends Effect {
 	@Override
 	protected void execute(Event e) {
 		assert url != null;
-		String hash = null;
-		if (this.hash != null)
-			hash = this.hash.getSingle(e);
 		String address = url.getSingle(e);
 		if (address == null) {
 			return; // Can't send, URL not valid
 		}
 		for (Player p : recipients.getArray(e)) {
 			try {
-				if (hash == null) {
-					p.setResourcePack(address);
-				} else {
-					if (PAPER_METHOD_EXISTS)
-						p.setResourcePack(address, hash);
-					else
-						p.setResourcePack(address, StringUtils.hexStringToByteArray(hash));
-				}
+				p.setResourcePack(address);
 			} catch (Exception ignored) {}
 		}
 	}
 
 	@Override
 	public String toString(@Nullable Event e, boolean debug) {
-		return "send the resource pack from " + url.toString(e, debug) +
-				(hash != null ? " with hash " + hash.toString(e, debug) : "") +
-				" to " + recipients.toString(e, debug);
+		return "send the resource pack from " + url.toString(e, debug) + " to " + recipients.toString(e, debug);
 	}
 
 }
