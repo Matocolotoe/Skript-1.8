@@ -162,7 +162,6 @@ orientations before flattening:
 		zombie (head|skull)¦s = - {Damage:2}
 		player (head|skull)¦s = - {Damage:3}
 		creeper (head|skull)¦s = - {Damage:4}
-		dragon (head|skull)¦s = - {Damage:5}
 	{wall orientations}:
 		{default} = -
 		south(ward| facing) = - {Damage:3}
