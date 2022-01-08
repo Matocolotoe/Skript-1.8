@@ -663,6 +663,12 @@ public final class BukkitEventValues {
 				return new ItemType(e.getItem().getItemStack());
 			}
 		}, 0);
+		EventValues.registerEventValue(PlayerPickupItemEvent.class, Entity.class, new Getter<Entity, PlayerPickupItemEvent>() {
+			@Override
+			public @Nullable Entity get(PlayerPickupItemEvent e) {
+				return e.getPlayer();
+			}
+		}, 0);
 		// PlayerItemConsumeEvent
 		if (Skript.supports("org.bukkit.event.player.PlayerItemConsumeEvent")) {
 			EventValues.registerEventValue(PlayerItemConsumeEvent.class, ItemType.class, new Getter<ItemType, PlayerItemConsumeEvent>() {
