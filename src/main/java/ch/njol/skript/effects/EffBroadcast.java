@@ -88,12 +88,27 @@ public class EffBroadcast extends Effect {
 
 		for (Expression<?> message : messages) {
 			if (message instanceof VariableString) {
-				BaseComponent[] components = BungeeConverter.convert(((VariableString) message).getMessageComponents(e));
-				receivers.forEach(receiver -> receiver.spigot().sendMessage(components));
+				VariableString variable = (VariableString) message;
+				String[] all = variable.getAll(e);
+				BaseComponent[] components = BungeeConverter.convert(variable.getMessageComponents(e));
+				receivers.forEach(receiver -> {
+					if (receiver instanceof org.bukkit.entity.Player) {
+						receiver.spigot().sendMessage(components);
+					} else {
+						receiver.sendMessage(all);
+					}
+				});
 			} else if (message instanceof ExprColoured && ((ExprColoured) message).isUnsafeFormat()) { // Manually marked as trusted
 				for (Object realMessage : message.getArray(e)) {
-					BaseComponent[] components = BungeeConverter.convert(ChatMessages.parse((String) realMessage));
-					receivers.forEach(receiver -> receiver.spigot().sendMessage(components));
+					String string = (String) realMessage;
+					BaseComponent[] components = BungeeConverter.convert(ChatMessages.parse(string));
+					receivers.forEach(receiver -> {
+						if (receiver instanceof org.bukkit.entity.Player) {
+							receiver.spigot().sendMessage(components);
+						} else {
+							receiver.sendMessage(string);
+						}
+					});
 				}
 			} else {
 				for (Object messageObject : message.getArray(e)) {
