@@ -93,7 +93,7 @@ public class EffBroadcast extends Effect {
 				BaseComponent[] components = BungeeConverter.convert(variable.getMessageComponents(e));
 				receivers.forEach(receiver -> {
 					if (receiver instanceof org.bukkit.entity.Player) {
-						receiver.spigot().sendMessage(components);
+						((org.bukkit.entity.Player) receiver).spigot().sendMessage(components);
 					} else {
 						receiver.sendMessage(all);
 					}
@@ -104,7 +104,7 @@ public class EffBroadcast extends Effect {
 					BaseComponent[] components = BungeeConverter.convert(ChatMessages.parse(string));
 					receivers.forEach(receiver -> {
 						if (receiver instanceof org.bukkit.entity.Player) {
-							receiver.spigot().sendMessage(components);
+							((org.bukkit.entity.Player) receiver).spigot().sendMessage(components);
 						} else {
 							receiver.sendMessage(string);
 						}
