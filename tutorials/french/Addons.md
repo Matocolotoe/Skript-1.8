@@ -1,9 +1,16 @@
 # Addons
-Certains addons nécessitent des modifications particulières pour fonctionner
-avec Skript-1.8. Pour le moment, seul **SkQuery** nécessite d'être mis à jour.
 
-Cliquez [ici](https://cdn.discordapp.com/attachments/697442955555897394/697456620774359110/SkQueryLime.jar)
-pour télécharger **SkQueryLime v4.1.1** modifié pour la 1.8.
+Certains addons nécessitent des modifications particulières pour fonctionner avec Skript-1.8. Voici quelques
+recommandations à propos de certains d'entre eux.
 
-Si vous utilisez TuSKe et rencontrez des problèmes avec Skript au démarrage du serveur, téléchargez
-le dernier patch [ici](https://cdn.discordapp.com/attachments/697442955555897394/701839165846847608/TuSKe.jar).
+- **SkBee** : utilisez la version 1.10.2, disponible sur
+  le [repository officiel](https://github.com/ShaneBeee/SkBee/releases/tag/1.10.2)
+- **SkQuery** : si vous utilisez Skript 2.5.3 ou moins, vous pouvez télécharger une version modifiée
+  [ici](https://cdn.discordapp.com/attachments/697442955555897394/697456620774359110/SkQueryLime.jar) ; si vous utilisez
+  Skript 2.6+, vous pouvez télécharger une version modifiée sur
+  le [repository](https://github.com/Matocolotoe/SkQuery-1.8/) que j'ai créé
+- **TuSKe** : essayez d'éviter de l'utiliser, puisqu'il n'est plus maintenu
+  utilisez [skript-gui](https://github.com/APickledWalrus/skript-gui/)
+  à la place ; si vous en avez toujours besoin, vous pouvez télécharger une version
+  modifiée [ici](https://skripttools.net/dl/TuSKe+1.8.3-PikachuPatch-v3.jar)
+- **WildSkript** : essayez d'éviter de l'utiliser, puisqu'il n'est plus maintenu, et il ne fonctionne pas avec Skript 2.6+
