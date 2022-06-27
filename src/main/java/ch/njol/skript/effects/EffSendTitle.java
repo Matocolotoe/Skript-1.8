@@ -18,6 +18,7 @@
  */
 package ch.njol.skript.effects;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
@@ -33,6 +34,9 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 @Name("Title - Send")
 @Description({"Sends a title/subtitle to the given player(s) with optional fadein/stay/fadeout times for Minecraft versions 1.11 and above.",
 		"Note: if no input is given for the title/subtitle or the times," +
@@ -43,19 +47,13 @@ import ch.njol.util.Kleenean;
 		"send subtitle \"Party!\" to all players"})
 @Since("2.3")
 public class EffSendTitle extends Effect {
-	
-	private final static boolean TIME_SUPPORTED = Skript.methodExists(Player.class,"sendTitle", String.class, String.class, int.class, int.class, int.class);
-	
+
+	private static final String version = "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().substring(23);
+
 	static {
-		if (TIME_SUPPORTED)
-			Skript.registerEffect(EffSendTitle.class,
-					"send title %string% [with subtitle %-string%] [to %players%] [for %-timespan%] [with fade[(-| )]in %-timespan%] [(and|with) fade[(-| )]out %-timespan%]",
-					"send subtitle %string% [to %players%] [for %-timespan%] [with fade[(-| )]in %-timespan%] [(and|with) fade[(-| )]out %-timespan%]");
-		else
-			Skript.registerEffect(EffSendTitle.class,
-					"send title %string% [with subtitle %-string%] [to %players%]",
-					"send subtitle %string% [to %players%]");
-		
+		Skript.registerEffect(EffSendTitle.class,
+			"send title %string% [with subtitle %-string%] [to %players%] [for %-timespan%] [with fade[(-| )]in %-timespan%] [(and|with) fade[(-| )]out %-timespan%]",
+			"send subtitle %string% [to %players%] [for %-timespan%] [with fade[(-| )]in %-timespan%] [(and|with) fade[(-| )]out %-timespan%]");
 	}
 	
 	@Nullable
@@ -73,30 +71,48 @@ public class EffSendTitle extends Effect {
 		title = matchedPattern == 0 ? (Expression<String>) exprs[0] : null;
 		subtitle = (Expression<String>) exprs[1 - matchedPattern];
 		recipients = (Expression<Player>) exprs[2 - matchedPattern];
-		if (TIME_SUPPORTED) {
-			stay = (Expression<Timespan>) exprs[3 - matchedPattern];
-			fadeIn = (Expression<Timespan>) exprs[4 - matchedPattern];
-			fadeOut = (Expression<Timespan>) exprs[5 - matchedPattern];
-		}
+		stay = (Expression<Timespan>) exprs[3 - matchedPattern];
+		fadeIn = (Expression<Timespan>) exprs[4 - matchedPattern];
+		fadeOut = (Expression<Timespan>) exprs[5 - matchedPattern];
 		return true;
 	}
 	
 	@SuppressWarnings("null")
 	@Override
 	protected void execute(final Event e) {
-		String title = this.title != null ? this.title.getSingle(e) : "",
-		sub = subtitle != null ? subtitle.getSingle(e) : null;
-		
-		if (TIME_SUPPORTED) {
-			int in = fadeIn != null ? (int) fadeIn.getSingle(e).getTicks_i() : -1,
+		Object packet = null;
+
+		int in = fadeIn != null ? (int) fadeIn.getSingle(e).getTicks_i() : -1,
 			stay = this.stay != null ? (int) this.stay.getSingle(e).getTicks_i() : -1,
 			out = fadeOut != null ? (int) fadeOut.getSingle(e).getTicks_i() : -1;
-			
-			for (Player p : recipients.getArray(e))
-				p.sendTitle(title, sub, in, stay, out);
-		} else {
-			for (Player p : recipients.getArray(e))
-				p.sendTitle(title, sub);
+
+		if (in != -1 || stay != -1 || out != -1) {
+			Constructor<?> titlePacket;
+			try {
+				final Class<?> baseComponentClass = Class.forName(version + ".IChatBaseComponent");
+				final Class<?> enumTitleAction = Class.forName(version + ".PacketPlayOutTitle$EnumTitleAction");
+				Object emptyComponent = baseComponentClass.getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"\"}");
+				titlePacket = Class.forName(version + ".PacketPlayOutTitle").getConstructor(enumTitleAction, baseComponentClass, int.class, int.class, int.class);
+				packet = titlePacket.newInstance(enumTitleAction.getDeclaredField("TIMES").get(null), emptyComponent, in, stay, out);
+			} catch (ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchFieldException | NoSuchMethodException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		String title = this.title != null ? this.title.getSingle(e) : "",
+		sub = subtitle != null ? subtitle.getSingle(e) : null;
+
+		for (Player p : recipients.getArray(e)) {
+			if (packet != null) {
+				try {
+					final Object entity = p.getClass().getMethod("getHandle").invoke(p);
+					final Object playerConnection = entity.getClass().getField("playerConnection").get(entity);
+					playerConnection.getClass().getMethod("sendPacket", Class.forName(version + ".Packet")).invoke(playerConnection, packet);
+				} catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | NoSuchFieldException ex) {
+					ex.printStackTrace();
+				}
+			}
+			p.sendTitle(title, sub);
 		}
 	}
 	
@@ -108,10 +124,9 @@ public class EffSendTitle extends Effect {
 		in = fadeIn != null ? fadeIn.toString(e, debug) : "",
 		stay = this.stay != null ? this.stay.toString(e, debug) : "",
 		out = fadeOut != null ? this.fadeOut.toString(e, debug) : "";
-		return ("send title " + title +
-				sub == "" ? "" : " with subtitle " + sub) + " to " +
-				recipients.toString(e, debug) + (TIME_SUPPORTED ?
-				" for " + stay + " with fade in " + in + " and fade out" + out : "");
+		return "send title " + title +
+			(sub == "" ? "" : " with subtitle " + sub) + " to " +
+			recipients.toString(e, debug) + " for " + stay + " with fade in " + in + " and fade out" + out;
 	}
 	
 }
