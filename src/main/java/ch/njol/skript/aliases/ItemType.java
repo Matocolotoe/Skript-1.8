@@ -34,6 +34,7 @@ import java.util.Random;
 import java.util.RandomAccess;
 import java.util.Set;
 
+import ch.njol.skript.classes.Comparator.Relation;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -1171,6 +1172,23 @@ public class ItemType implements Unit, Iterable<ItemData>, Container<ItemStack>,
 		return enchants.stream()
 			.map(enchant -> new EnchantmentType(enchant.getKey(), enchant.getValue()))
 			.toArray(EnchantmentType[]::new);
+	}
+
+	/**
+	 * Gets the {@link EnchantmentType} with the given {@link Enchantment} of this item type.
+	 *
+	 * @param enchantment the enchantment
+	 * @return the enchantment type, or null if the item is not enchanted with the given enchantment
+	 */
+	@Nullable
+	public EnchantmentType getEnchantmentType(Enchantment enchantment) {
+		Set<Entry<Enchantment, Integer>> enchants = getItemMeta().getEnchants().entrySet();
+
+		return enchants.stream()
+			.filter(entry -> entry.getKey().equals(enchantment))
+			.map(enchant -> new EnchantmentType(enchant.getKey(), enchant.getValue()))
+			.findFirst()
+			.orElse(null);
 	}
 	
 	/**
