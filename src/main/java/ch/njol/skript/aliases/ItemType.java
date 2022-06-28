@@ -288,6 +288,8 @@ public class ItemType implements Unit, Iterable<ItemData>, Container<ItemStack>,
 				return this.getRandom().getType() == Material.valueOf("BIRCH_DOOR_ITEM");
 			case "BREWING_STAND":
 				return this.getRandom().getType() == Material.valueOf("BREWING_STAND_ITEM");
+			case "CAKE_BLOCK":
+				return this.getRandom().getType() == Material.valueOf("CAKE");
 			case "CAULDRON":
 				return this.getRandom().getType() == Material.valueOf("CAULDRON_ITEM");
 			case "DARK_OAK_DOOR":
