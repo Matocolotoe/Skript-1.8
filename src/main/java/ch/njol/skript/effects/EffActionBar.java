@@ -45,7 +45,7 @@ public class EffActionBar extends Effect {
 	private static final String version = "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().substring(23);
 	
 	static {
-		Skript.registerEffect(EffActionBar.class, "send [the] action bar [with text] %string% to %players%");
+		Skript.registerEffect(EffActionBar.class, "send [the] action[ ]bar [with text] %string% to %players%");
 	}
 
 	@SuppressWarnings("null")
