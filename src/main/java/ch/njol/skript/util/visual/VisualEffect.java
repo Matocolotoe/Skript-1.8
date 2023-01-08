@@ -38,6 +38,8 @@ public class VisualEffect implements SyntaxElement, YggdrasilSerializable {
 
 	@Nullable
 	private Object data;
+	private float speed = 0f;
+	private float dX, dY, dZ = 0f;
 
 	public VisualEffect() {}
 	
@@ -48,6 +50,16 @@ public class VisualEffect implements SyntaxElement, YggdrasilSerializable {
 
 		if (exprs.length > 4 && exprs[0] != null) {
 			data = exprs[0].getSingle(null);
+		}
+
+		if ((parseResult.mark & 1) != 0) {
+			dX = ((Number) exprs[exprs.length - 4].getSingle(null)).floatValue();
+			dY = ((Number) exprs[exprs.length - 3].getSingle(null)).floatValue();
+			dZ = ((Number) exprs[exprs.length - 2].getSingle(null)).floatValue();
+		}
+
+		if ((parseResult.mark & 2) != 0) {
+			speed = ((Number) exprs[exprs.length - 1].getSingle(null)).floatValue();
 		}
 
 		return true;

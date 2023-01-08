@@ -79,39 +79,18 @@ public class ItemData implements Cloneable, YggdrasilExtendedSerializable {
 
 	static final ItemFactory itemFactory = Bukkit.getServer().getItemFactory();
 	
-	static final MaterialRegistry materialRegistry;
-	
 	private static final boolean SPAWN_EGG_META_EXISTS = Skript.classExists("org.bukkit.inventory.meta.SpawnEggMeta");
 	private static final boolean HAS_NEW_SKULL_META_METHODS = Skript.methodExists(SkullMeta.class, "getOwningPlayer");
 	
 	// Load or create material registry
 	static {
-		Gson gson = new GsonBuilder().registerTypeAdapterFactory(EnumTypeAdapter.factory).serializeNulls().create();
 		Path materialsFile = Paths.get(Skript.getInstance().getDataFolder().getAbsolutePath(), "materials.json");
 		if (Files.exists(materialsFile)) {
-			String content = null;
 			try {
-				content = new String(Files.readAllBytes(materialsFile), StandardCharsets.UTF_8);
+				Files.delete(materialsFile);
 			} catch (IOException e) {
-				Skript.exception(e, "Loading material registry failed!");
+				Skript.exception(e, "Failed to remove legacy material registry file!");
 			}
-			if (content != null) {
-				String[] names = gson.fromJson(content, String[].class);
-				assert names != null;
-				materialRegistry = MaterialRegistry.load(names);
-			} else {
-				materialRegistry = new MaterialRegistry();
-			}
-		} else {
-			materialRegistry = new MaterialRegistry();
-		}
-		
-		// Always rewrite material registry, in case some updates got applied to it
-		String content = gson.toJson(materialRegistry.getMaterials());
-		try {
-			Files.write(materialsFile, content.getBytes(StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			Skript.exception(e, "Saving material registry failed!");
 		}
 	}
 	
@@ -142,7 +121,7 @@ public class ItemData implements Cloneable, YggdrasilExtendedSerializable {
 	 * allow comparing it against other blocks.
 	 */
 	@Nullable
-	transient BlockValues blockValues;
+	BlockValues blockValues;
 	
 	/**
 	 * Whether this represents an item (that definitely cannot have
@@ -610,20 +589,24 @@ public class ItemData implements Cloneable, YggdrasilExtendedSerializable {
 	@Override
 	public Fields serialize() throws NotSerializableException {
 		Fields fields = new Fields(this); // ItemStack is transient, will be ignored
-		fields.putPrimitive("id", materialRegistry.getId(type));
+		fields.putPrimitive("id", type.ordinal());
 		fields.putObject("meta", stack.getItemMeta());
 		return fields;
 	}
 
+	private static final Material[] materials = Material.values();
+
 	@Override
 	public void deserialize(Fields fields) throws StreamCorruptedException, NotSerializableException {
-		this.type = materialRegistry.getMaterial(fields.getAndRemovePrimitive("id", int.class));
+		this.type = materials[fields.getAndRemovePrimitive("id", int.class)];
 		ItemMeta meta = fields.getAndRemoveObject("meta", ItemMeta.class);
 		fields.setFields(this); // Everything but ItemStack and Material
 		
 		// Initialize ItemStack
 		this.stack = new ItemStack(type);
 		stack.setItemMeta(meta); // Just set meta to it
+
+		fields.setFields(this); // Everything but ItemStack and Material
 	}
 	
 	/**

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.entity.AbstractHorse;
+import org.bukkit.entity.Allay;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.ArmorStand;
@@ -108,6 +109,7 @@ import org.bukkit.entity.Squid;
 import org.bukkit.entity.Stray;
 import org.bukkit.entity.Strider;
 import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.Tadpole;
 import org.bukkit.entity.ThrownExpBottle;
 import org.bukkit.entity.TippedArrow;
 import org.bukkit.entity.Trident;
@@ -116,6 +118,7 @@ import org.bukkit.entity.Turtle;
 import org.bukkit.entity.Vex;
 import org.bukkit.entity.Vindicator;
 import org.bukkit.entity.WanderingTrader;
+import org.bukkit.entity.Warden;
 import org.bukkit.entity.WaterMob;
 import org.bukkit.entity.Witch;
 import org.bukkit.entity.Wither;
@@ -302,6 +305,12 @@ public class SimpleEntityData extends EntityData<Entity> {
 			types.add(new SimpleEntityDataInfo("glow squid", GlowSquid.class));
 			types.add(new SimpleEntityDataInfo("marker", Marker.class));
 			types.add(new SimpleEntityDataInfo("glow item frame", GlowItemFrame.class));
+		}
+
+		if (Skript.isRunningMinecraft(1, 19)) {
+			types.add(new SimpleEntityDataInfo("allay", Allay.class));
+			types.add(new SimpleEntityDataInfo("tadpole", Tadpole.class));
+			types.add(new SimpleEntityDataInfo("warden", Warden.class));
 		}
 		
 		// Register zombie after Husk and Drowned to make sure both work

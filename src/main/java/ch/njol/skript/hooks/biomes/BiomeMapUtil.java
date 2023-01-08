@@ -28,41 +28,41 @@ public class BiomeMapUtil {
 	
 	public enum ToBiome {
 		SWAMP("SWAMPLAND"),
-		FOREST(Biome.FOREST),
-		TAIGA(Biome.TAIGA),
-		DESERT(Biome.DESERT),
-		PLAINS(Biome.PLAINS),
+		FOREST("FOREST"),
+		TAIGA("TAIGA"),
+		DESERT("DESERT"),
+		PLAINS("PLAINS"),
 		NETHER("HELL"),
 		THE_END("SKY"),
-		OCEAN(Biome.OCEAN),
-		RIVER(Biome.RIVER),
+		OCEAN("OCEAN"),
+		RIVER("RIVER"),
 		MOUNTAINS("EXTREME_HILLS"),
-		FROZEN_OCEAN(Biome.FROZEN_OCEAN),
-		FROZEN_RIVER(Biome.FROZEN_RIVER),
+		FROZEN_OCEAN("FROZEN_OCEAN"),
+		FROZEN_RIVER("FROZEN_RIVER"),
 		SNOWY_TUNDRA("ICE_PLAINS"),
 		SNOWY_MOUNTAINS("ICE_MOUNTAINS"),
 		MUSHROOM_FIELDS("MUSHROOM_ISLAND"),
 		MUSHROOM_FIELD_SHORE("MUSHROOM_SHORE"),
 		BEACH("BEACH"),
-		DESERT_HILLS(Biome.DESERT_HILLS),
+		DESERT_HILLS("DESERT_HILLS"),
 		WOODED_HILLS("FOREST_HILLS"),
-		TAIGA_HILLS(Biome.TAIGA_HILLS),
+		TAIGA_HILLS("TAIGA_HILLS"),
 		MOUNTAIN_EDGE("SMALL_MOUNTAINS"),
-		JUNGLE(Biome.JUNGLE),
-		JUNGLE_HILLS(Biome.JUNGLE_HILLS),
-		JUNGLE_EDGE(Biome.JUNGLE_EDGE),
-		DEEP_OCEAN(Biome.DEEP_OCEAN),
+		JUNGLE("JUNGLE"),
+		JUNGLE_HILLS("JUNGLE_HILLS"),
+		JUNGLE_EDGE("JUNGLE_EDGE"),
+		DEEP_OCEAN("DEEP_OCEAN"),
 		STONE_SHORE("STONE_BEACH"),
 		SNOWY_BEACH("COLD_BEACH"),
-		BIRCH_FOREST(Biome.BIRCH_FOREST),
-		BIRCH_FOREST_HILLS(Biome.BIRCH_FOREST_HILLS),
+		BIRCH_FOREST("BIRCH_FOREST"),
+		BIRCH_FOREST_HILLS("BIRCH_FOREST_HILLS"),
 		DARK_FOREST("ROOFED_FOREST"),
 		SNOWY_TAIGA("COLD_TAIGA"),
 		SNOWY_TAIGA_HILLS("COLD_TAIGA_HILLS"),
 		GIANT_TREE_TAIGA("MEGA_TAIGA"),
 		GIANT_TREE_TAIGA_HILLS("MEGA_TAIGA_HILLS"),
 		WOODED_MOUNTAINS("EXTREME_HILLS_PLUS"),
-		SAVANNA(Biome.SAVANNA),
+		SAVANNA("SAVANNA"),
 		SAVANNA_PLATEAU("SAVANNA_PLATEAU"),
 		BADLANDS("MESA"),
 		WOODED_BADLANDS_PLATEAU("MESA_PLATEAU_FOREST"),
@@ -89,25 +89,17 @@ public class BiomeMapUtil {
 		MODIFIED_GRAVELLY_MOUNTAINS("EXTREME_HILLS_PLUS_MOUNTAINS"),
 		GIANT_SPRUCE_TAIGA_HILLS("MEGA_SPRUCE_TAIGA_HILLS");
 		
-		public static @Nullable
-		ToBiome getMapping(Biome biome) {
-			ToBiome[] values = values();
-			
-			for (ToBiome value : values) {
+		public static @Nullable ToBiome getMapping(Biome biome) {
+			for (ToBiome value : values()) {
 				if (value.getHandle().equals(biome)) {
 					return value;
 				}
 			}
-			
 			return null;
 		}
 		
-		private Biome handle;
-		
-		ToBiome(Biome handle) {
-			this.handle = handle;
-		}
-		
+		private final Biome handle;
+
 		ToBiome(String name) {
 			this.handle = Biome.valueOf(name);
 		}
@@ -115,5 +107,7 @@ public class BiomeMapUtil {
 		public Biome getHandle() {
 			return this.handle;
 		}
+
 	}
+
 }

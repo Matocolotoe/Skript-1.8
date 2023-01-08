@@ -5,7 +5,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import java.time.LocalTime
 
 plugins {
-	id 'com.github.johnrengelman.shadow' version '7.0.0'
+	id 'com.github.johnrengelman.shadow' version '7.1.2'
 	id 'com.github.hierynomus.license' version '0.16.1'
 	id 'maven-publish'
 	id 'java'
@@ -27,7 +27,8 @@ allprojects {
 }
 
 dependencies {
-	implementation group: 'io.papermc.paper', name: 'paper-api', version: '1.17.1-R0.1-SNAPSHOT'
+	shadow group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.0'
+	implementation group: 'io.papermc.paper', name: 'paper-api', version: '1.19.2-R0.1-SNAPSHOT'
 	implementation group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.annotation', version: '2.2.600'
 	implementation group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
 	implementation group: 'com.sk89q.worldguard', name: 'worldguard-legacy', version: '7.0.0-SNAPSHOT'
@@ -75,6 +76,11 @@ tasks.withType(ShadowJar) {
 	configurations = [
 		project.configurations.shadow
 	]
+	dependencies {
+		include(dependency('org.bstats:bstats-bukkit'))
+		include(dependency('org.bstats:bstats-base'))
+	}
+	relocate 'org.bstats', 'ch.njol.skript.bstats'
 	manifest {
 		attributes(
 			'Name': 'ch/njol/skript',
