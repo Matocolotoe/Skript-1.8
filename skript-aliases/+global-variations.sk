@@ -14,8 +14,8 @@ data values:
 		yellow = - {Damage:4}
 		(lime|light green) = - {Damage:5}
 		pink = - {Damage:6}
-		[dark] gray = - {Damage:7}
-		light gray = - {Damage:8}
+		[dark] gr(a|e)y = - {Damage:7}
+		light gr(a|e)y = - {Damage:8}
 		cyan = - {Damage:9}
 		purple = - {Damage:10}
 		blue = - {Damage:11}
@@ -31,8 +31,8 @@ data values:
 		yellow = - {Damage:11}
 		(lime|light green) = - {Damage:10}
 		pink = - {Damage:9}
-		[dark] gray = - {Damage:8}
-		light gray = - {Damage:7}
+		[dark] gr(a|e)y = - {Damage:8}
+		light gr(a|e)y = - {Damage:7}
 		cyan = - {Damage:6}
 		purple = - {Damage:5}
 		blue = - {Damage:4}
@@ -50,8 +50,8 @@ data values:
 		yellow = minecraft:yellow_-
 		(lime|light green) = minecraft:lime_-
 		pink = minecraft:pink_-
-		[dark] gray = minecraft:gray_-
-		light gray = minecraft:silver_-
+		[dark] gr(a|e)y = minecraft:gray_-
+		light gr(a|e)y = minecraft:silver_-
 		cyan = minecraft:cyan_-
 		purple = minecraft:purple_-
 		blue = minecraft:blue_-

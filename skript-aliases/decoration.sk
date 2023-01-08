@@ -213,8 +213,8 @@ orientations before flattening:
 		yellow = - {Base:11}
 		(lime|light green) = - {Base:10}
 		pink = - {Base:9}
-		[dark] gray = - {Base:8}
-		light gray = - {Base:7}
+		[dark] gr(a|e)y = - {Base:8}
+		light gr(a|e)y = - {Base:7}
 		cyan = - {Base:6}
 		purple = - {Base:5}
 		blue = - {Base:4}
