@@ -35,7 +35,7 @@ redstone before flattening:
 	# Buttons & levers
 	{attached toggleable} [oak] wood button¦s = minecraft:wooden_button
 	{attached toggleable} stone button¦s = minecraft:stone_button
-	[any] button = stone button, wood button
+	[any] button¦s = stone button, wood button
 	[redstone] lever¦s = minecraft:lever
 
 	# Pressure plates
