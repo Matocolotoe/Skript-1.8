@@ -14,22 +14,7 @@ unlisted before flattening:
 	minecraft version = 1.12.2 or older
 	[nether] portal [block¦s] = minecraft:portal
 	[monster] spawner¦s = minecraft:mob_spawner
-
-	{command block direction}:
-		{default} = - {Damage:1}
-		down[ward] [facing] = - {Damage:0}
-		up[ward] [facing] = - {Damage:1}
-		north[ward] [facing] = - {Damage:2}
-		south[ward] [facing] = - {Damage:3}
-		west[ward] [facing] = - {Damage:4}
-		east[ward] [facing] = - {Damage:5}
-		down[ward] [facing] conditional = - {Damage:8}
-		up[ward] [facing] conditional = - {Damage:9}
-		north[ward] [facing] conditional = - {Damage:10}
-		south[ward] [facing] conditional = - {Damage:11}
-		west[ward] [facing] conditional = - {Damage:12}
-		east[ward] [facing] conditional = - {Damage:13}
-	{command block direction} [impulse] command block¦s = minecraft:command_block
+	command block¦s = minecraft:command_block
 
 	{cocoa states}:
 		{default} = - {Damage:0}
