@@ -222,6 +222,24 @@ orientations before flattening:
 		[dark] green = - {Base:2}
 		red = - {Base:1}
 		black = - {Base:0}
+	{banner item colors}:
+		{default} = -
+		white = - {Damage:15}
+		orange = - {Damage:14}
+		magenta = - {Damage:13}
+		light blue = - {Damage:12}
+		yellow = - {Damage:11}
+		(lime|light green) = - {Damage:10}
+		pink = - {Damage:9}
+		[dark] gr(a|e)y = - {Damage:8}
+		light gr(a|e)y = - {Damage:7}
+		cyan = - {Damage:6}
+		purple = - {Damage:5}
+		blue = - {Damage:4}
+		brown = - {Damage:3}
+		[dark] green = - {Damage:2}
+		red = - {Damage:1}
+		black = - {Damage:0}
 
 directionals before flattening:
 	minecraft version = 1.12.2 or older
@@ -236,5 +254,6 @@ basic banners:
 	minecraft version = 1.10.2 or older
 	wall banner¦s = minecraft:wall_banner
 	[standing] banner¦s = minecraft:standing_banner
+	({banner item colors}) banner item¦s = minecraft:banner
 	[any] banner item¦s = minecraft:banner
 	[any] banner = minecraft:banner, minecraft:wall_banner, minecraft:standing_banner
