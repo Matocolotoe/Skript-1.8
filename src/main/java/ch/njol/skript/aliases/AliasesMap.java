@@ -195,7 +195,7 @@ public class AliasesMap {
 			}
 		}
 		
-		throw new AssertionError(); // Shouldn't have reached here
+		return new Match(MatchQuality.DIFFERENT, null);
 	}
 	
 	/**
