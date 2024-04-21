@@ -40,7 +40,8 @@ decoratives before flattening:
 	[cob]web¦s = minecraft:web
 
 	# Plants
-	dead (grass|bush)¦es = minecraft:tallgrass {Damage:0}, minecraft:deadbush
+	dead (grass|bush)¦es = minecraft:deadbush
+	shrub¦s = minecraft:tallgrass {Damage:0}
 	(tall|long) grass¦es = minecraft:tallgrass {Damage:1}
 	fern¦s = minecraft:tallgrass {Damage:2}
 
