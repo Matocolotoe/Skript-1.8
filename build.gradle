@@ -12,7 +12,7 @@ plugins {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	options.compilerArgs += ["-source", "1.8", "-target", "1.8"]
+	options.compilerArgs += ["-source", "17", "-target", "17"]
 }
 
 allprojects {
@@ -28,6 +28,8 @@ allprojects {
 
 dependencies {
 	shadow group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.0'
+	shadow group: 'com.h2database', name: 'h2', version: '2.1.214'
+	shadow group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
 	implementation group: 'io.papermc.paper', name: 'paper-api', version: '1.19.2-R0.1-SNAPSHOT'
 	implementation group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.annotation', version: '2.2.600'
 	implementation group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
@@ -35,6 +37,7 @@ dependencies {
 	implementation group: 'net.milkbowl.vault', name: 'Vault', version: '1.7.1', {
 		exclude group: 'org.bstats', module: 'bstats-bukkit'
 	}
+
 	implementation fileTree(dir: 'lib', include: '*.jar')
 }
 
@@ -79,6 +82,8 @@ tasks.withType(ShadowJar) {
 	dependencies {
 		include(dependency('org.bstats:bstats-bukkit'))
 		include(dependency('org.bstats:bstats-base'))
+        include(dependency('com.h2database:h2'))
+        include(dependency('com.zaxxer:HikariCP'))
 	}
 	relocate 'org.bstats', 'ch.njol.skript.bstats'
 	manifest {
@@ -186,6 +191,15 @@ createTestTask('skriptTestFull', 'src/test/skript/environments/', false)
 createTestTask('skriptTestDev', 'src/test/skript/environments/main/' + (project.property('testEnv') == null
 	? 'paper-1.17.json' : project.property('testEnv') + '.json'), true)
 
+// Generic replace tokens, e.g: '@version@'
+tasks.withType(Copy).configureEach {
+	filter(ReplaceTokens, tokens: [
+		'today'            : '' + LocalTime.now(),
+		'h2.version'       : project.property('h2.version'),
+		'hikaricp.version' : project.property('hikaricp.version')
+	])
+}
+
 // Build flavor configurations
 task githubResources(type: ProcessResources) {
 	from 'src/main/resources', {
@@ -198,7 +212,6 @@ task githubResources(type: ProcessResources) {
 			channel = 'beta'
 		filter ReplaceTokens, tokens: [
 			'version'         : version,
-			'today'           : '' + LocalTime.now(),
 			'release-flavor'  : 'github-matocolotoe-1.8', // Skript-1.8 build, distributed on Github
 			'release-channel' : channel, // Release channel, see above
 			'release-updater' : 'ch.njol.skript.update.GithubChecker', // Github API client
@@ -234,7 +247,6 @@ task spigotResources(type: ProcessResources) {
 			channel = 'beta'
 		filter ReplaceTokens, tokens: [
 			'version'         : version,
-			'today'           : '' + LocalTime.now(),
 			'release-flavor'  : 'spigot-matocolotoe-1.8', // Skript-1.8 build, distributed on Spigot resources
 			'release-channel' : channel, // Release channel, see above
 			'release-updater' : 'ch.njol.skript.update.GithubChecker', // Github API client
@@ -266,7 +278,6 @@ task nightlyResources(type: ProcessResources) {
 		version = project.property('version') + '-nightly-' + hash
 		filter ReplaceTokens, tokens: [
 			'version'         : version,
-			'today'           : '' + LocalTime.now(),
 			'release-flavor'  : 'nightly-matocolotoe-1.8', // Skript-1.8 build, automatically done by CI
 			'release-channel' : 'alpha', // No update checking, but these are VERY unstable
 			'release-updater' : 'ch.njol.skript.update.NoUpdateChecker', // No autoupdates for now

@@ -15,7 +15,7 @@ jobs:
     - name: Build Skript-1.8
       run: ./gradlew clean build
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Skript
         path: build/libs/Skript.jar

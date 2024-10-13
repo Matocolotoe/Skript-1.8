@@ -16,9 +16,4 @@
  *
  * Copyright Peter Güttinger, SkriptLang team and contributors
  */
-/**
- * Code related to loading, handling, and saving variables. Some code is found in <tt>lang</tt> as well (e.g. in {@link ch.njol.skript.lang.Variable}).
- * 
- * @author Peter Güttinger
- */
-package ch.njol.skript.variables;
+package org.skriptlang.skript.variables.storage;

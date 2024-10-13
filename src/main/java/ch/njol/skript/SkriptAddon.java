@@ -21,6 +21,8 @@ package ch.njol.skript;
 import ch.njol.skript.localization.Language;
 import ch.njol.skript.util.Utils;
 import ch.njol.skript.util.Version;
+import ch.njol.skript.variables.Variables;
+import ch.njol.skript.variables.VariableStorage;
 import ch.njol.util.coll.iterator.EnumerationIterable;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.eclipse.jdt.annotation.Nullable;
@@ -128,7 +130,21 @@ public final class SkriptAddon {
 		}
 		return this;
 	}
-	
+
+	/**
+	 * Register a VariableStorage class for Skript to create if the user config value matches.
+	 * 
+	 * @param <T> A class to extend VariableStorage.
+	 * @param storage The class of the VariableStorage implementation.
+	 * @param names The names used in the config of Skript to select this VariableStorage.
+	 * @return This SkriptAddon for method chaining.
+	 * @throws SkriptAPIException if the operation was not successful because the storage class is already registered.
+	 */
+	public <T extends VariableStorage> SkriptAddon registerStorage(Class<T> storage, String... names) throws SkriptAPIException {
+		Variables.registerStorage(this, storage, names);
+		return this;
+	}
+
 	@Nullable
 	private String languageFileDirectory = null;
 	
