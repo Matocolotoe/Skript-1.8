@@ -18,6 +18,7 @@
  */
 package ch.njol.skript.expressions;
 
+import ch.njol.skript.Skript;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
@@ -37,7 +38,9 @@ import ch.njol.util.coll.CollectionUtils;
 public class ExprAI extends SimplePropertyExpression<LivingEntity, Boolean> {
 	
 	static {
-		register(ExprAI.class, Boolean.class, "(ai|artificial intelligence)", "livingentities");
+		if (Skript.methodExists(LivingEntity.class, "setAI", boolean.class)) {
+			register(ExprAI.class, Boolean.class, "(ai|artificial intelligence)", "livingentities");
+		}
 	}
 	
 	@Override
