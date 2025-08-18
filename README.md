@@ -23,8 +23,3 @@ Documentation is available [here](https://skriptlang.github.io/Skript) for the l
 ## Issues and other stuff
 Since this fork only provides retro-compatibility, issues regarding Skript will have to be posted
 on the [official repository](https://github.com/SkriptLang/Skript) of the plugin.
-
-However, don't hesitate to report any problem which you believe directly related to
-the plugin by opening an issue [here](https://github.com/Matocolotoe/Skript-1.8/issues).
-
-If you need any further help, feel free to join our [Discord server](https://discord.gg/yh3Z98m).
